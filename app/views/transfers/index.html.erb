@@ -1,0 +1,35 @@
+<h1>Listing transfers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Transfer date</th>
+      <th>Amount</th>
+      <th>Month</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transfers.each do |transfer| %>
+      <tr>
+        <td><%= transfer.company_id %></td>
+        <td><%= transfer.transfer_date %></td>
+        <td><%= transfer.amount %></td>
+        <td><%= transfer.month %></td>
+        <td><%= transfer.year %></td>
+        <td><%= link_to 'Show', transfer %></td>
+        <td><%= link_to 'Edit', edit_transfer_path(transfer) %></td>
+        <td><%= link_to 'Destroy', transfer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transfer', new_transfer_path %>

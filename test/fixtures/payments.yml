@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company_id: 1
+  employee_id: MyString
+  year: 1
+  month: 1
+  amount: 1
+
+two:
+  company_id: 1
+  employee_id: MyString
+  year: 1
+  month: 1
+  amount: 1

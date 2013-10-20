@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vat: 1
+  name: MyString
+  district: MyString
+  property_type_id: 1
+
+two:
+  vat: 1
+  name: MyString
+  district: MyString
+  property_type_id: 1

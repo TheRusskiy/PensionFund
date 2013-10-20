@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @transfer.company_id %>
+</p>
+
+<p>
+  <strong>Transfer date:</strong>
+  <%= @transfer.transfer_date %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @transfer.amount %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @transfer.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @transfer.year %>
+</p>
+
+<%= link_to 'Edit', edit_transfer_path(@transfer) %> |
+<%= link_to 'Back', transfers_path %>

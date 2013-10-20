@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @payment.company_id %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @payment.employee_id %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @payment.year %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @payment.month %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

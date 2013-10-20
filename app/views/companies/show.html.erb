@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vat:</strong>
+  <%= @company.vat %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @company.district %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @company.property_type_id %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

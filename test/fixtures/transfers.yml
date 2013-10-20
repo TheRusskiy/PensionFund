@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company_id: 1
+  transfer_date: 2013-10-20
+  amount: 1
+  month: 1
+  year: 1
+
+two:
+  company_id: 1
+  transfer_date: 2013-10-20
+  amount: 1
+  month: 1
+  year: 1
