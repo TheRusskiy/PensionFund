@@ -58,5 +58,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'launchy'
+  gem 'awesome_print'
   #gem 'cucumber-rails', :require => false
 end

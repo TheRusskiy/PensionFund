@@ -1,4 +1,5 @@
 FactoryGirl.define do
+# USERS
   factory :user do
     sequence(:email) {|n| "user_#{n}@example.com" }
     password '1234'
@@ -16,6 +17,7 @@ FactoryGirl.define do
     factory(:user_manager) {role_id 4}
   end
 
+# PROPERTY TYPES
   factory :property_type, class: PropertyType do
     name "private"
 
@@ -24,6 +26,7 @@ FactoryGirl.define do
     end
   end
 
+# COMPANIES
   factory :company do
     sequence(:name) {|n| "Company_#{n}"}
     sequence(:vat) {|n| n }
@@ -37,11 +40,13 @@ FactoryGirl.define do
     end
   end
 
+# TRANSFERS
   factory :transfer do
     amount 1000
     association :company, factory: :company, strategy: :build
   end
 
+# EMPLOYEES
   factory :employee do
     sequence(:full_name) {|n| "Name_#{n}"}
 
@@ -60,16 +65,19 @@ FactoryGirl.define do
     end
   end
 
+# JOB POSITIONS
   factory :job_position do
     sequence(:name) {|n| "Job_#{n}"}
   end
 
+# CONTRACTS
   factory :contract do
     association :company, factory: :company, strategy: :build
     association :employee, factory: :employee, strategy: :build
     association :job_position, factory: :job_position, strategy: :build
   end
 
+# PAYMENTS
   factory :payment do
     association :company, factory: :company, strategy: :build
     association :employee, factory: :employee, strategy: :build

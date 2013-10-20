@@ -31,3 +31,4 @@ examples
 out
 
 .keep
+db/*.sqlite3

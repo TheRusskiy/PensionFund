@@ -12,4 +12,9 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.before(:suite) { FactoryGirl.reload }
+  class Object
+    def t *args
+      I18n.t args.length==1 ? args.first : args
+    end
+  end
 end

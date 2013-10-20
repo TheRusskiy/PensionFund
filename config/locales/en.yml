@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  employee:
+    destroy: "Delete"
+    show: "Show"
+    edit: "Edit"
+    full_name: "Full name"
+    update: "Update Employee"
