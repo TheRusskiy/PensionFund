@@ -21,9 +21,11 @@
 
 en:
   hello: "Hello world"
+  back: "Back"
   employee:
     destroy: "Delete"
     show: "Show"
     edit: "Edit"
     full_name: "Full name"
-    update: "Update Employee"
+    update: "Save"
+    new: "New Employeefsdfsd"

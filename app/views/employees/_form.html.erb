@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :full_name %><br>
+    <%= f.label :full_name, t('employee.full_name') %><br>
     <%= f.text_field :full_name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('employee.update') %>
   </div>
 <% end %>

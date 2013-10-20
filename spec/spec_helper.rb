@@ -2,6 +2,15 @@ require 'rspec'
 require_relative 'support/deferred_garbage_collection'
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
+  end
+
+  config.after(:suite) do
+    DatabaseCleaner.clean
+  end
+
   config.before(:all) do
     DeferredGarbageCollection.start
   end

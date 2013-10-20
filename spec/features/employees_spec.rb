@@ -37,5 +37,15 @@ feature 'Employee page' do
     fill_in t('employee.full_name'), :with => 'FooName'
     click_button(t 'employee.update')
     @employee.reload.full_name.should eq 'FooName'
+    current_path.should eq employee_path(@employee)
+  end
+
+  scenario 'can be created' do
+    click_link(t('employee.new'), :href => new_employee_path)
+    fill_in t('employee.full_name'), :with => 'BarName'
+    click_button(t 'employee.update')
+    employee = Employee.last
+    employee.full_name.should eq 'BarName'
+    current_path.should eq employee_path(employee)
   end
 end

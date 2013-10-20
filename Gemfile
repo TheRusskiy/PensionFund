@@ -60,5 +60,6 @@ group :test do
   gem 'capybara-webkit'
   gem 'launchy'
   gem 'awesome_print'
+  gem 'database_cleaner'
   #gem 'cucumber-rails', :require => false
 end
