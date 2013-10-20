@@ -4,8 +4,6 @@ class CreateCompanies < ActiveRecord::Migration
       t.integer :vat
       t.string :name
       t.string :district
-      t.integer :property_type_id
-
       t.timestamps
     end
   end

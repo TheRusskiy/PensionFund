@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020120736) do
+ActiveRecord::Schema.define(version: 20131020142312) do
 
   create_table "companies", force: true do |t|
     t.integer  "vat"
     t.string   "name"
     t.string   "district"
-    t.integer  "property_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "property_type_id"
   end
 
   create_table "contracts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "employee_id"
     t.integer  "company_id"
     t.integer  "job_position_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "employees", force: true do |t|
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 20131020120736) do
   end
 
   create_table "payments", force: true do |t|
-    t.integer  "company_id"
-    t.string   "employee_id"
     t.integer  "year"
     t.integer  "month"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "company_id"
+    t.integer  "employee_id"
   end
 
   create_table "property_types", force: true do |t|
@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(version: 20131020120736) do
   end
 
   create_table "transfers", force: true do |t|
-    t.integer  "company_id"
     t.date     "transfer_date"
     t.integer  "amount"
     t.integer  "month"
     t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "company_id"
   end
 
   create_table "users", force: true do |t|

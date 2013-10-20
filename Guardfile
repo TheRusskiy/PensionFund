@@ -25,6 +25,8 @@
 
 guard 'spring', :rspec_cli => '--color' do
   watch(%r{^spec/.+_spec\.rb$})
+  #watch(%r{^db/schema.rb$})                           { |m| ['rake db:test:purge', 'rake db:test:load', 'rake db:test:prepare']}
+  watch(%r{^spec/factories/.+\.rb$})
   watch(%r{^spec/spec_helper\.rb$})                   { |m| 'spec' }
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
   watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
