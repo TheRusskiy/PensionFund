@@ -56,5 +56,7 @@ group :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'capybara-webkit'
+  #gem 'cucumber-rails', :require => false
 end

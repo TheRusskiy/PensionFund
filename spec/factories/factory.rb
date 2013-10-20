@@ -1,4 +1,21 @@
 FactoryGirl.define do
+  factory :user do
+    sequence(:email) {|n| "user_#{n}@example.com" }
+    password '1234'
+    password_confirmation '1234'
+    role_id 0
+
+    factory :user_non_matching_passwords do
+      password_confirmation '4321'
+    end
+
+    factory(:user_guest) {role_id 0}
+    factory(:user_admin) {role_id 1}
+    factory(:user_operator) {role_id 2}
+    factory(:user_inspector) {role_id 3}
+    factory(:user_manager) {role_id 4}
+  end
+
   factory :property_type, class: PropertyType do
     name "private"
 

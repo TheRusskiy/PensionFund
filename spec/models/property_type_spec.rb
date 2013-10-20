@@ -1,10 +1,9 @@
-require 'rspec'
 require_relative '../spec_helper'
 
 describe 'Property Type' do
   let(:type) {build(:property_type)}
   it 'should be created' do
-    type.name.should eq("private")
+    type.name.should eq('private')
   end
 
   it 'should have many companies' do

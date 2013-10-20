@@ -1,3 +1,4 @@
+require 'rspec'
 require_relative 'support/deferred_garbage_collection'
 
 RSpec.configure do |config|
