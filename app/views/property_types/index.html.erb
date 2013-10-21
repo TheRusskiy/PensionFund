@@ -1,9 +1,9 @@
-<h1>Listing property_types</h1>
+<h1><%= t 'property.title'%></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= t('property.name')%></th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,9 +14,9 @@
     <% @property_types.each do |property_type| %>
       <tr>
         <td><%= property_type.name %></td>
-        <td><%= link_to 'Show', property_type %></td>
-        <td><%= link_to 'Edit', edit_property_type_path(property_type) %></td>
-        <td><%= link_to 'Destroy', property_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('property.show'), property_type %></td>
+        <td><%= link_to t('property.edit'), edit_property_type_path(property_type) %></td>
+        <td><%= link_to t('property.destroy'), property_type, method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Property type', new_property_type_path %>
+<%= link_to t('property.new'), new_property_type_path %>

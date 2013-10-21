@@ -1,13 +1,13 @@
-<h1>Listing transfers</h1>
+<h1><%= t('transfer.title')%></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Company</th>
-      <th>Transfer date</th>
-      <th>Amount</th>
-      <th>Month</th>
-      <th>Year</th>
+      <th><%= t('transfer.company')%></th>
+      <th><%= t('transfer.transfer_date')%></th>
+      <th><%= t('transfer.amount')%></th>
+      <th><%= t('transfer.month')%></th>
+      <th><%= t('transfer.year')%></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,14 +17,14 @@
   <tbody>
     <% @transfers.each do |transfer| %>
       <tr>
-        <td><%= transfer.company_id %></td>
+        <td><%= transfer.company %></td>
         <td><%= transfer.transfer_date %></td>
         <td><%= transfer.amount %></td>
         <td><%= transfer.month %></td>
         <td><%= transfer.year %></td>
-        <td><%= link_to 'Show', transfer %></td>
-        <td><%= link_to 'Edit', edit_transfer_path(transfer) %></td>
-        <td><%= link_to 'Destroy', transfer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('transfer.show'), transfer %></td>
+        <td><%= link_to t('transfer.edit'), edit_transfer_path(transfer) %></td>
+        <td><%= link_to t('transfer.destroy'), transfer, method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Transfer', new_transfer_path %>
+<%= link_to t('transfer.new'), new_transfer_path %>

@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Full name:</strong>
+  <strong><%= t 'employee.full_name'%>:</strong>
   <%= @employee.full_name %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to t('employee.edit'), edit_employee_path(@employee) %> |
+<%= link_to t('back'), employees_path %>

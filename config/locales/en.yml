@@ -22,10 +22,84 @@
 en:
   hello: "Hello world"
   back: "Back"
+  are_you_sure: "Are you sure?"
+
   employee:
+    title: "Employees"
     destroy: "Delete"
     show: "Show"
     edit: "Edit"
     full_name: "Full name"
     update: "Save"
-    new: "New Employeefsdfsd"
+    new: "New Employee"
+    editing_title: "Editing employee"
+    new_title: "New employee"
+
+  property:
+    title: "Property types"
+    destroy: "Destroy"
+    show: "Show"
+    edit: "Edit"
+    update: "Save"
+    new: "New type"
+    name: "Name"
+    editing_title: "Editing property type"
+    new_title: "New property type"
+
+  transfer:
+    title: "Transfers"
+    destroy: "Destroy"
+    show: "Show"
+    edit: "Edit"
+    update: "Save"
+    new: "New transfer"
+    editing_title: "Editing transfer"
+    new_title: "New transfer"
+    transfer_date: "Transfer date"
+    amount: "Amount"
+    month: "Month"
+    year: "Year"
+    company: "Company"
+
+  position:
+    title: "Job positions"
+    destroy: "Destroy"
+    show: "Show"
+    edit: "Edit"
+    update: "Save"
+    new: "New job position"
+    name: "Name"
+    editing_title: "Editing job position"
+    new_title: "New job position"
+
+  company:
+    title: "Companies"
+    destroy: "Destroy"
+    show: "Show"
+    edit: "Edit"
+    update: "Save"
+    new: "New company"
+    editing_title: "Editing company"
+    new_title: "New company"
+    vat: "VAT"
+    name: "Name"
+    district: "District"
+    property_type: "Property type"
+
+  payment:
+    title: "Payments"
+    destroy: "Destroy"
+    show: "Show"
+    edit: "Edit"
+    update: "Save"
+    new: "New payment"
+    editing_title: "Editing payment"
+    new_title: "New payment"
+    year: "VAT"
+    month: "Name"
+    amount: "Amount"
+    company: "Company"
+    employee: "Employee"
+
+
+

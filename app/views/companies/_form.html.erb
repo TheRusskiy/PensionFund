@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :vat %><br>
+    <%= f.label :vat, t('company.vat') %><br>
     <%= f.number_field :vat %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, t('company.name') %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :district %><br>
+    <%= f.label :district, t('company.district') %><br>
     <%= f.text_field :district %>
   </div>
   <div class="field">
-    <%= f.label :property_type_id %><br>
+    <%= f.label :property_type_id, t('company.property_type') %><br>
     <%= f.number_field :property_type_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('company.update') %>
   </div>
 <% end %>

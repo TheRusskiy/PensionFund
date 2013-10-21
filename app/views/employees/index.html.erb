@@ -1,24 +1,24 @@
-<h1>Listing employees</h1>
+<h1><%=t 'employee.title' %></h1>
 
 <table>
   <thead>
-    <tr>
-      <th>Full name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th><%= t 'employee.full_name' %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @employees.each do |employee| %>
+  <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.full_name %></td>
         <td><%= link_to t('employee.show'), employee %></td>
         <td><%= link_to t('employee.edit'), edit_employee_path(employee) %></td>
-        <td><%= link_to t('employee.destroy'), employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('employee.destroy'), employee, method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

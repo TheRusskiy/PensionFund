@@ -1,13 +1,13 @@
-<h1>Listing payments</h1>
+<h1><%=t('payment.title')%></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Company</th>
-      <th>Employee</th>
-      <th>Year</th>
-      <th>Month</th>
-      <th>Amount</th>
+      <th><%=t('payment.company')%></th>
+      <th><%=t('payment.employee')%></th>
+      <th><%=t('payment.year')%></th>
+      <th><%=t('payment.month')%></th>
+      <th><%=t('payment.amount')%></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,14 +17,14 @@
   <tbody>
     <% @payments.each do |payment| %>
       <tr>
-        <td><%= payment.company_id %></td>
-        <td><%= payment.employee_id %></td>
+        <td><%= payment.company %></td>
+        <td><%= payment.employee %></td>
         <td><%= payment.year %></td>
         <td><%= payment.month %></td>
         <td><%= payment.amount %></td>
-        <td><%= link_to 'Show', payment %></td>
-        <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('payment.show'), payment %></td>
+        <td><%= link_to t('payment.edit'), edit_payment_path(payment) %></td>
+        <td><%= link_to t('payment.destroy'), payment, method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Payment', new_payment_path %>
+<%= link_to t('payment.new'), new_payment_path %>

@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Company:</strong>
-  <%= @payment.company_id %>
+  <strong><%=t('payment.company')%>:</strong>
+  <%= @payment.company %>
 </p>
 
 <p>
-  <strong>Employee:</strong>
-  <%= @payment.employee_id %>
+  <strong><%=t('payment.employee')%>:</strong>
+  <%= @payment.employee %>
 </p>
 
 <p>
-  <strong>Year:</strong>
+  <strong><%=t('payment.year')%>:</strong>
   <%= @payment.year %>
 </p>
 
 <p>
-  <strong>Month:</strong>
+  <strong><%=t('payment.month')%>:</strong>
   <%= @payment.month %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
+  <strong><%=t('payment.amount')%>:</strong>
   <%= @payment.amount %>
 </p>
 
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+<%= link_to t('payment.edit'), edit_payment_path(@payment) %> |
+<%= link_to t('back'), payments_path %>

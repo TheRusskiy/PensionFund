@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('position.name')%>:</strong>
   <%= @job_position.name %>
 </p>
 
-<%= link_to 'Edit', edit_job_position_path(@job_position) %> |
-<%= link_to 'Back', job_positions_path %>
+<%= link_to t('position.edit'), edit_job_position_path(@job_position) %> |
+<%= link_to t('back'), job_positions_path %>

@@ -15,7 +15,7 @@ feature 'Employee page' do
   end
 
   scenario 'display employees' do
-    expect(page).to have_content('employees')
+    expect(page).to have_content(t'employee.title')
     expect(page).to have_content(@employee.full_name)
   end
 

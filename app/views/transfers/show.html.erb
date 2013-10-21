@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Company:</strong>
-  <%= @transfer.company_id %>
+  <strong><%= t('transfer.company')%>:</strong>
+  <%= @transfer.company %>
 </p>
 
 <p>
-  <strong>Transfer date:</strong>
+  <strong><%= t('transfer.transfer_date')%>:</strong>
   <%= @transfer.transfer_date %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
+  <strong><%= t('transfer.amount')%>:</strong>
   <%= @transfer.amount %>
 </p>
 
 <p>
-  <strong>Month:</strong>
+  <strong><%= t('transfer.month')%>:</strong>
   <%= @transfer.month %>
 </p>
 
 <p>
-  <strong>Year:</strong>
+  <strong><%= t('transfer.year')%>:</strong>
   <%= @transfer.year %>
 </p>
 
-<%= link_to 'Edit', edit_transfer_path(@transfer) %> |
-<%= link_to 'Back', transfers_path %>
+<%= link_to t('transfer.edit'), edit_transfer_path(@transfer) %> |
+<%= link_to t('back'), transfers_path %>

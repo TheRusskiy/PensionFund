@@ -3,4 +3,8 @@ class Company < ActiveRecord::Base
   has_many :contracts
   has_many :transfers
   has_many :employees, through: :contracts
+
+  def to_s
+    name
+  end
 end

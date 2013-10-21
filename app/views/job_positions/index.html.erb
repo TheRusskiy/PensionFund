@@ -1,9 +1,9 @@
-<h1>Listing job_positions</h1>
+<h1><%= t('position.title')%></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= t('position.name')%></th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,9 +14,9 @@
     <% @job_positions.each do |job_position| %>
       <tr>
         <td><%= job_position.name %></td>
-        <td><%= link_to 'Show', job_position %></td>
-        <td><%= link_to 'Edit', edit_job_position_path(job_position) %></td>
-        <td><%= link_to 'Destroy', job_position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('position.show'), job_position %></td>
+        <td><%= link_to t('position.edit'), edit_job_position_path(job_position) %></td>
+        <td><%= link_to t('position.destroy'), job_position, method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Job position', new_job_position_path %>
+<%= link_to t('position.new'), new_job_position_path %>

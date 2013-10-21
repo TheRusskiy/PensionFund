@@ -19,7 +19,7 @@ FactoryGirl.define do
 
 # PROPERTY TYPES
   factory :property_type, class: PropertyType do
-    name "private"
+    sequence(:name) {|n| "private_#{n}"}
 
     factory :type_with_company do
       companies {[create(:company)]}
