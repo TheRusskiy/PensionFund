@@ -1,6 +1,6 @@
 require_relative 'feature_helper'
 
-feature 'Property type page' do
+feature 'Property type page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do

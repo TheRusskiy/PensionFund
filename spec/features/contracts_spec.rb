@@ -1,6 +1,6 @@
 require_relative 'feature_helper'
 
-feature 'Contract page' do
+feature 'Contract page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do

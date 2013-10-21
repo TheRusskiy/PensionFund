@@ -1,6 +1,6 @@
 require_relative 'feature_helper'
 
-feature 'transfer page' do
+feature 'transfer page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do

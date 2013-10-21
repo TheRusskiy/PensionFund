@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+JobPosition.create(name: 'Janitor')
+# use rake db:reset to fully recreate db and seeds

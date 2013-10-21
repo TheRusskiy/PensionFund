@@ -1,6 +1,6 @@
 require_relative 'feature_helper'
 
-feature 'Position type page' do
+feature 'Position type page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do

@@ -1,6 +1,6 @@
 require_relative 'feature_helper'
 
-feature 'Employee page' do
+feature 'Employee page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do
