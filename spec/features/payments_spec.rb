@@ -32,11 +32,20 @@ feature 'Payments page' do
   end
 
   scenario 'can be edited' do
+    some_employee = create :employee
+    some_company = create :company
+
     click_link(t('payment.edit'), :href => edit_payment_path(@payment))
     find_field(t 'payment.amount').value.should eq @payment.amount.to_s
     fill_in t('payment.amount'), :with => '4200'
+
+    select(some_company.name, :from => t('payment.company'))
+    select(some_employee.full_name, :from => t('payment.employee'))
+
     click_button(t 'payment.update')
     @payment.reload.amount.should eq 4200
+    @payment.company.should eq some_company
+    @payment.employee.should eq some_employee
     current_path.should eq payment_path(@payment)
   end
 

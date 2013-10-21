@@ -30,6 +30,7 @@ FactoryGirl.define do
   factory :company do
     sequence(:name) {|n| "Company_#{n}"}
     sequence(:vat) {|n| n }
+    association :property_type, factory: :property_type, strategy: :create
 
     factory :companies_with_employees do
       employees {[create(:employee)]}

@@ -1,0 +1,1 @@
+json.extract! contract, :company_id, :employee_id, :job_position_id

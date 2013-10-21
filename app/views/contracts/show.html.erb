@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%=t('contract.company')%>:</strong>
+  <%= @contract.company.name %>
+</p>
+
+<p>
+  <strong><%=t('contract.employee')%>:</strong>
+  <%= @contract.employee.full_name %>
+</p>
+
+<p>
+  <strong><%=t('contract.job_position')%>:</strong>
+  <%= @contract.job_position.name %>
+</p>
+
+<%= link_to t('contract.edit'), edit_contract_path(@contract) %> |
+<%= link_to t('back'), contract_path %>

@@ -32,11 +32,17 @@ feature 'transfer page' do
   end
 
   scenario 'can be edited' do
+    foo = create :company, name: 'foo company'
+
     click_link(t('transfer.edit'), :href => edit_transfer_path(@transfer))
     find_field(t 'transfer.amount').value.should eq @transfer.amount.to_s
     fill_in t('transfer.amount'), :with => '4200'
+
+    select('foo company', :from => t('transfer.company'))
+
     click_button(t 'transfer.update')
     @transfer.reload.amount.should eq 4200
+    @transfer.company.should eq foo
     current_path.should eq transfer_path(@transfer)
   end
 

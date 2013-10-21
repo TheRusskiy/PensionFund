@@ -17,6 +17,7 @@ feature 'company page' do
   scenario 'display all' do
     expect(page).to have_content(t 'company.title')
     expect(page).to have_content(@company.name)
+    expect(page).to have_content(@company.property_type.name)
   end
 
   scenario 'delete from list-page' do
@@ -32,11 +33,18 @@ feature 'company page' do
   end
 
   scenario 'can be edited' do
+    foo = create :property_type, name: 'foo property'
+    create :property_type, name: 'bar property'
+
     click_link(t('company.edit'), :href => edit_company_path(@company))
     find_field(t 'company.name').value.should eq @company.name
     fill_in t('company.name'), :with => 'Foo Inc.'
+
+    select('foo property', :from => t('company.property_type'))
+
     click_button(t 'company.update')
     @company.reload.name.should eq 'Foo Inc.'
+    @company.property_type.should eq foo
     current_path.should eq company_path(@company)
   end
 

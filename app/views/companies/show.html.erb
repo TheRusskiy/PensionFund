@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong><%= t('company.id')%>:</strong>
+  <%= @company.id %>
+</p>
+
+<p>
   <strong><%= t('company.vat')%>:</strong>
   <%= @company.vat %>
 </p>
@@ -17,7 +22,7 @@
 
 <p>
   <strong><%= t('company.property_type')%>:</strong>
-  <%= @company.property_type_id %>
+  <%= @company.property_type %>
 </p>
 
 <%= link_to t('company.edit'), edit_company_path(@company) %> |

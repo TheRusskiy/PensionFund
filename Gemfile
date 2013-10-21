@@ -45,13 +45,21 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
+
+group :development do
+  gem 'ruby-debug-base19x'
+  gem 'ruby-debug-ide'
+end
 
 group :test do
+  gem 'ruby-debug-base19x'
+  gem 'ruby-debug-ide'
   gem 'spring'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spring'
+  #gem 'zeus'
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'factory_girl_rails'

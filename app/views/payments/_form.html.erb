@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :company_id, t('payment.company') %><br>
-    <%= f.number_field :company_id %>
+    <%= f.select :company_id, company_items %>
   </div>
   <div class="field">
     <%= f.label :employee_id, t('payment.employee') %><br>
-    <%= f.text_field :employee_id %>
+    <%= f.select :employee_id, employee_items %>
   </div>
   <div class="field">
     <%= f.label :year, t('payment.year') %><br>

@@ -29,6 +29,7 @@ en:
     destroy: "Delete"
     show: "Show"
     edit: "Edit"
+    id: 'Insurance number'
     full_name: "Full name"
     update: "Save"
     new: "New Employee"
@@ -81,6 +82,7 @@ en:
     new: "New company"
     editing_title: "Editing company"
     new_title: "New company"
+    id: "Pension fund number"
     vat: "VAT"
     name: "Name"
     district: "District"
@@ -95,11 +97,23 @@ en:
     new: "New payment"
     editing_title: "Editing payment"
     new_title: "New payment"
-    year: "VAT"
-    month: "Name"
+    year: "Year"
+    month: "Month"
     amount: "Amount"
     company: "Company"
     employee: "Employee"
 
+  contract:
+    title: "Contracts"
+    destroy: "Destroy"
+    show: "Show"
+    edit: "Edit"
+    update: "Save"
+    new: "New contract"
+    editing_title: "Editing contract"
+    new_title: "New contract"
+    company: "Company"
+    job_position: "Job position"
+    employee: "Employee"
 
 

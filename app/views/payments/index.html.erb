@@ -17,8 +17,8 @@
   <tbody>
     <% @payments.each do |payment| %>
       <tr>
-        <td><%= payment.company %></td>
-        <td><%= payment.employee %></td>
+        <td><%= payment.company.name %></td>
+        <td><%= payment.employee.full_name %></td>
         <td><%= payment.year %></td>
         <td><%= payment.month %></td>
         <td><%= payment.amount %></td>
