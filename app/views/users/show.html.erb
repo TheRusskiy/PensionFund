@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('user.email')%>:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong><%= t('user.role')%>:</strong>
+  <%= @user.role %>
+</p>
+
+<%= link_to t('user.edit'), edit_user_path(@user) %> |
+<%= link_to t('back'), users_path %>

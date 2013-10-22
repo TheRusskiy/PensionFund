@@ -1,0 +1,29 @@
+<h1><%= t('user.title')%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t('user.email')%></th>
+      <th><%= t('user.role')%></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td><%= link_to t('user.show'), user %></td>
+        <td><%= link_to t('user.edit'), edit_user_path(user) %></td>
+        <td><%= link_to t('user.destroy'), user, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('user.new'), new_user_path %>

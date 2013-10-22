@@ -18,5 +18,8 @@ feature 'Top bar menu', :slow do
 
     click_link(t 'menu.companies')
     current_path.should eq companies_path
+
+    click_link(t 'menu.users')
+    current_path.should eq users_path
   end
 end

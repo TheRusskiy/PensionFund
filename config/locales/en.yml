@@ -34,6 +34,23 @@ en:
     contracts: "Contracts"
     property_types: "Property types"
     job_positions: "Job positions"
+    users: "System Users"
+
+  user:
+    title: "Users"
+    destroy: "Delete"
+    show: "Show"
+    edit: "Edit"
+    email: "Email address"
+    update: "Save"
+    new: "New user"
+    editing_title: "Editing user"
+    new_title: "User creation"
+    role: "Role"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    successfully_created: "User was successfully created"
+    successfully_updated: "User was successfully updated"
 
   employee:
     title: "Employees"

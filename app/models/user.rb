@@ -5,13 +5,17 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   def role
-    case role_id
+    User.role_name role_id
+  end
+
+  def self.role_name role_number
+    case role_number
       when 0 then "guest"
       when 1 then "admin"
       when 2 then "operator"
       when 3 then "inspector"
       when 4 then "manager"
-    else raise Exception "Unknown role_id"
-  end
+      else raise Exception "Unknown role_id"
+    end
   end
 end

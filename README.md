@@ -20,3 +20,5 @@ Just my little university project
   13. CSS
   14. <del>seed data</del>
   15. do something with annoying "back" buttons?
+  16. Inspector specific query
+  16. Manager specific query
