@@ -35,6 +35,14 @@ en:
     property_types: "Property types"
     job_positions: "Job positions"
     users: "System Users"
+    password: "Password"
+    email: "Email"
+    sign_up: "Sign up"
+    sign_in: "Sign in"
+    signed_in: "Signed in"
+    signed_out: "Signed out"
+    wrong_credentials: "Wrong credentials"
+    log_out: "Log out"
 
   user:
     title: "Users"
@@ -47,10 +55,15 @@ en:
     editing_title: "Editing user"
     new_title: "User creation"
     role: "Role"
-    password: "Password"
+    password: "Your password"
     password_confirmation: "Password confirmation"
     successfully_created: "User was successfully created"
     successfully_updated: "User was successfully updated"
+    guest: "Guest"
+    admin: "Admin"
+    operator: "Operator"
+    inspector: "Inspector"
+    manager: "Manager"
 
   employee:
     title: "Employees"

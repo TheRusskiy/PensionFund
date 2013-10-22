@@ -7,5 +7,22 @@
     <li><%= link_to t('menu.property_types'), property_types_path %></li>
     <li><%= link_to t('menu.job_positions'), job_positions_path %></li>
     <li><%= link_to t('menu.users'), users_path %></li>
+    <li>
+      <% if current_user %>
+          <strong><%= current_user.email%></strong>
+          <%=form_tag('/logout', method: 'get') do %>
+              <%= submit_tag(t'menu.log_out') %>
+          <% end %>
+      <% else %>
+          <%=form_tag('/login', method: 'get') do %>
+              <strong><%= t'user.guest'%></strong>
+              <%= label_tag(:email, t('menu.email')) %>
+              <%= text_field_tag(:email) %>
+              <%= label_tag(:password, t('menu.password')) %>
+              <%= text_field_tag(:password) %>
+              <%= submit_tag(t'menu.sign_in') %>
+          <% end %>
+          <%= button_to t('menu.sign_up'), new_user_path, method: 'get' %>
+      <% end %>
   </ul>
 </div>

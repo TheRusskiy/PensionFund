@@ -17,11 +17,11 @@ describe 'User' do
   end
 
   it "has text roles" do
-    build(:user_guest).role.should eq "guest"
-    build(:user_operator).role.should eq "operator"
-    build(:user_admin).role.should eq "admin"
-    build(:user_inspector).role.should eq "inspector"
-    build(:user_manager).role.should eq "manager"
+    build(:user_guest).role.should eq t"user.guest"
+    build(:user_operator).role.should eq t"user.operator"
+    build(:user_admin).role.should eq t"user.admin"
+    build(:user_inspector).role.should eq t"user.inspector"
+    build(:user_manager).role.should eq t"user.manager"
   end
 
   it 'must have email, password and role' do

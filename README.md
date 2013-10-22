@@ -9,11 +9,11 @@ Just my little university project
   2. <del>move text data to yaml locale</del>
   3. <del>validations</del>
   4. <del>show from other entities</del>
-  5. <del>editing from other entities<del>
-  6. authentication
+  5. <del>editing from other entities</del>
+  6. <del>authentication</del>
   7. authorization
   8. main page
-  9. shared top menu
+  9. <del>shared top menu</del>
   10. shared information at bottom
   11. russian translation
   12. translation switch (via cookie?)
