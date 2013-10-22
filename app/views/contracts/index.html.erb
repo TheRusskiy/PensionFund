@@ -1,31 +1,6 @@
 <h1><%=t('contract.title')%></h1>
 
-<table>
-  <thead>
-  <tr>
-    <th><%=t('contract.company')%></th>
-    <th><%=t('contract.employee')%></th>
-    <th><%=t('contract.job_position')%></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @contracts.each do |contract| %>
-      <tr>
-        <td><%= contract.company.name %></td>
-        <td><%= contract.employee.full_name %></td>
-        <td><%= contract.job_position.name %></td>
-        <td><%= link_to t('contract.show'), contract %></td>
-        <td><%= link_to t('contract.edit'), edit_contract_path(contract) %></td>
-        <td><%= link_to t('contract.destroy'), contract, method: :delete, data: { confirm: t('are_you_sure') } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
+<%= render 'list' %>
 <br>
 
 <%= link_to t('contract.new'), new_contract_path %>

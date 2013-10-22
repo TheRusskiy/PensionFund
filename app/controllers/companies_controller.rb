@@ -10,6 +10,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @filtered = [:company]
+    @contracts = @company.contracts
   end
 
   # GET /companies/new

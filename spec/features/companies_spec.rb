@@ -1,4 +1,4 @@
-require_relative 'feature_helper'
+require_relative '../feature_helper'
 
 feature 'company page', :slow do
   include Rails.application.routes.url_helpers
@@ -26,10 +26,20 @@ feature 'company page', :slow do
     Company.exists?(@company).should be_true
   end
 
-  scenario 'has link to details' do
+  scenario 'details should display all companies and jobs' do
+    create :contract, company: @company
+    create :contract, company: @company
+    another_contract = create :contract
+
     click_link(t('company.show'), :href => company_path(@company))
     expect(page).to have_content(@company.name)
     expect(page).not_to have_content(@another_company.name)
+
+    @company.contracts.each do |c|
+      expect(page).to have_content(c.employee.full_name)
+      expect(page).to have_content(c.job_position.name)
+    end
+    expect(page).not_to have_content(another_contract.employee.full_name)
   end
 
   scenario 'can be edited' do

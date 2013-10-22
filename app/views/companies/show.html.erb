@@ -25,5 +25,7 @@
   <%= @company.property_type %>
 </p>
 
+<%= render 'contracts/list' %>
+
 <%= link_to t('company.edit'), edit_company_path(@company) %> |
 <%= link_to t('back'), companies_path %>

@@ -1,4 +1,4 @@
-require_relative 'feature_helper'
+require_relative '../feature_helper'
 
 feature 'transfer page', :slow do
   include Rails.application.routes.url_helpers

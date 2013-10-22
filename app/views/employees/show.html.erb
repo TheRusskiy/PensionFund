@@ -8,6 +8,7 @@
   <strong><%= t 'employee.full_name'%>:</strong>
   <%= @employee.full_name %>
 </p>
+<%= render 'contracts/list' %>
 
 <%= link_to t('employee.edit'), edit_employee_path(@employee) %> |
 <%= link_to t('back'), employees_path %>

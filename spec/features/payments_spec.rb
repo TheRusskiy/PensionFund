@@ -1,4 +1,4 @@
-require_relative 'feature_helper'
+require_relative '../feature_helper'
 
 feature 'Payments page', :slow do
   include Rails.application.routes.url_helpers

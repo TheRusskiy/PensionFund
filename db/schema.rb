@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20131022110225) do
     t.integer  "property_type_id"
   end
 
-  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
-  add_index "companies", ["vat"], name: "index_companies_on_vat", unique: true, using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true
+  add_index "companies", ["vat"], name: "index_companies_on_vat", unique: true
 
   create_table "contracts", force: true do |t|
     t.datetime "created_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131022110225) do
     t.integer  "job_position_id"
   end
 
-  add_index "contracts", ["company_id", "employee_id"], name: "index_contracts_on_company_id_and_employee_id", unique: true, using: :btree
+  add_index "contracts", ["company_id", "employee_id"], name: "index_contracts_on_company_id_and_employee_id", unique: true
 
   create_table "employees", force: true do |t|
     t.string   "full_name"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20131022110225) do
     t.datetime "updated_at"
   end
 
-  add_index "job_positions", ["name"], name: "index_job_positions_on_name", unique: true, using: :btree
+  add_index "job_positions", ["name"], name: "index_job_positions_on_name", unique: true
 
   create_table "payments", force: true do |t|
     t.integer  "year"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20131022110225) do
     t.integer  "employee_id"
   end
 
-  add_index "payments", ["company_id", "employee_id", "year", "month"], name: "unique_fields", unique: true, using: :btree
+  add_index "payments", ["company_id", "employee_id", "year", "month"], name: "unique_fields", unique: true
 
   create_table "property_types", force: true do |t|
     t.string   "name"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20131022110225) do
     t.datetime "updated_at"
   end
 
-  add_index "property_types", ["name"], name: "index_property_types_on_name", unique: true, using: :btree
+  add_index "property_types", ["name"], name: "index_property_types_on_name", unique: true
 
   create_table "transfers", force: true do |t|
     t.date     "transfer_date"
@@ -87,6 +87,6 @@ ActiveRecord::Schema.define(version: 20131022110225) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
