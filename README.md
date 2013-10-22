@@ -17,3 +17,4 @@ Just my little university project
   10. russian translation
   11. translation switch (via cookie?)
   12. CSS
+  13. seed data
