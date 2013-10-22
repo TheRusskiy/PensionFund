@@ -9,7 +9,7 @@ Just my little university project
   2. <del>move text data to yaml locale</del>
   3. <del>validations</del>
   4. <del>show from other entities</del>
-  5. editing from other entities
+  5. <del>editing from other entities<del>
   6. authentication
   7. authorization
   8. main page
