@@ -65,7 +65,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'capybara-webkit'
+  #gem 'capybara-webkit'
   gem 'launchy'
   gem 'awesome_print'
   gem 'database_cleaner'
