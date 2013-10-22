@@ -22,3 +22,5 @@ Just my little university project
   15. do something with annoying "back" buttons?
   16. Inspector specific query
   16. Manager specific query
+  17. forbid role change for all non admins
+  18. guest - Null Object?
