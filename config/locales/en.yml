@@ -24,6 +24,17 @@ en:
   back: "Back"
   are_you_sure: "Are you sure?"
 
+  home:
+    title: "Home"
+
+  menu:
+    employees: "Employees"
+    companies: "Companies"
+    transfers: "Transfers"
+    contracts: "Contracts"
+    property_types: "Property types"
+    job_positions: "Job positions"
+
   employee:
     title: "Employees"
     destroy: "Delete"
@@ -87,6 +98,7 @@ en:
     name: "Name"
     district: "District"
     property_type: "Property type"
+    new_contract: "Add new employee"
 
   payment:
     title: "Payments"

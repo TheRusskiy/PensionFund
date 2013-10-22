@@ -27,5 +27,9 @@
 
 <%= render 'contracts/list' %>
 
+<%= link_to t('company.new_contract'), new_contract_path(contract:{company_id:@company.id}, filtered:[:company]) %>
+
+<br>
+
 <%= link_to t('company.edit'), edit_company_path(@company) %> |
 <%= link_to t('back'), companies_path %>

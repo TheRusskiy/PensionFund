@@ -1,12 +1,12 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, only: [:show, :edit, :update, :destroy]
+  before_action :set_contract, only: [:show, :edit, :update, :destroy, :new]
 
   def index
     @contracts = Contract.all
   end
 
   def new
-    @contract = Contract.new
+    #@contract = Contract.new
   end
 
   def create
@@ -49,11 +49,12 @@ class ContractsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_contract
-    @contract = Contract.find(params[:id])
+    @contract = params[:id].nil? ? Contract.new(contract_params) : Contract.find(params[:id])
   end
 
   def contract_params
-    params.require(:contract).permit(:company_id, :employee_id, :job_position_id)
+    @filtered = params[:filtered]
+    params.require(:contract).permit(:company_id, :employee_id, :job_position_id) if params[:contract]
   end
 
 end

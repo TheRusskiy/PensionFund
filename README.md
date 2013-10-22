@@ -19,3 +19,4 @@ Just my little university project
   12. translation switch (via cookie?)
   13. CSS
   14. <del>seed data</del>
+  15. do something with annoying "back" buttons?

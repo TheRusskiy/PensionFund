@@ -42,6 +42,16 @@ feature 'company page', :slow do
     expect(page).not_to have_content(another_contract.employee.full_name)
   end
 
+  scenario 'should allow creation of new employee with current company pre filled
+            and current employees filtered out' do
+    current_contract = create :contract, company: @company
+    click_link(t('company.show'), :href => company_path(@company))
+    click_link(t('company.new_contract'))
+    current_path.should eq new_contract_path
+    find_field(t'contract.company').find('option[selected]').text.should eq @company.name
+    expect(page).not_to have_content(current_contract.employee.full_name)
+  end
+
   scenario 'can be edited' do
     foo = create :property_type, name: 'foo property'
     create :property_type, name: 'bar property'

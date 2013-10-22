@@ -11,14 +11,14 @@
         </div>
     <% end %>
 
-    <div class="field">
+    <div class="<%= filtered?('company') ? "hidden" : "field"%>" >
       <%= f.label :company_id, t('contract.company') %><br>
-      <%= f.select :company_id, company_items %>
+      <%= f.select :company_id, company_items%>
     </div>
 
     <div class="field">
       <%= f.label :employee_id, t('contract.employee') %><br>
-      <%= f.select :employee_id, employee_items %>
+      <%= f.select :employee_id, employee_items(employees_not_from_company @contract.company)%>
     </div>
 
     <div class="field">

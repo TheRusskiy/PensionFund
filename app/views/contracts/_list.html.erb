@@ -1,9 +1,9 @@
 <table>
   <thead>
   <tr>
-    <%= raw"<th>#{t('contract.company')}</th>" unless filtered? :company%>
-    <%= raw"<th>#{t('contract.employee')}</th>" unless filtered? :employee%>
-    <%= raw"<th>#{t('contract.job_position')}</th>" unless filtered? :job_position%>
+    <%= raw"<th>#{t('contract.company')}</th>" unless filtered? 'company'%>
+    <%= raw"<th>#{t('contract.employee')}</th>" unless filtered? 'employee'%>
+    <%= raw"<th>#{t('contract.job_position')}</th>" unless filtered? 'job_position'%>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +13,9 @@
   <tbody>
   <% @contracts.each do |contract| %>
       <tr>
-        <%= raw"<td>#{contract.company.name}</th>" unless filtered? :company%>
-        <%= raw"<td>#{contract.employee.full_name}</th>" unless filtered? :employee%>
-        <%= raw"<td>#{contract.job_position.name}</th>" unless filtered? :job_position%>
+        <%= raw"<td>#{contract.company.name}</th>" unless filtered? 'company'%>
+        <%= raw"<td>#{contract.employee.full_name}</th>" unless filtered? 'employee'%>
+        <%= raw"<td>#{contract.job_position.name}</th>" unless filtered? 'job_position'%>
         <td><%= link_to t('contract.show'), contract %></td>
         <td><%= link_to t('contract.edit'), edit_contract_path(contract) %></td>
         <td><%= link_to t('contract.destroy'), contract, method: :delete, data: { confirm: t('are_you_sure') } %></td>

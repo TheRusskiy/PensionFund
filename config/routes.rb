@@ -1,4 +1,6 @@
 Pensionfund::Application.routes.draw do
+  root :to => 'home#index'
+
   resources :job_positions
 
   resources :payments
