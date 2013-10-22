@@ -7,8 +7,4 @@ module CompaniesHelper
     }
   end
 
-  def companies_without_employee employee
-    return Company.all if employee.nil?
-    Company.all-employee.companies
-  end
 end

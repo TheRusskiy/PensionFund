@@ -46,6 +46,7 @@ en:
     new: "New Employee"
     editing_title: "Editing employee"
     new_title: "New employee"
+    new_contract: "Add new company"
 
   property:
     title: "Property types"

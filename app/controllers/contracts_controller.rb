@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+  include ApplicationHelper
+  before_action :set_filter
   before_action :set_contract, only: [:show, :edit, :update, :destroy, :new]
 
   def index
@@ -6,7 +8,7 @@ class ContractsController < ApplicationController
   end
 
   def new
-    #@contract = Contract.new
+    filter_data
   end
 
   def create
@@ -27,6 +29,7 @@ class ContractsController < ApplicationController
   end
 
   def edit
+    filter_data
   end
 
   def update
@@ -53,8 +56,33 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    @filtered = params[:filtered]
     params.require(:contract).permit(:company_id, :employee_id, :job_position_id) if params[:contract]
+  end
+
+  def set_filter
+    @filtered = params[:filtered]
+  end
+
+  def filter_data
+    if filtered?('company')
+      @employees = employees_not_from_company @contract.company
+    else
+      @employees = Employee.all
+    end
+
+    if filtered?('employee')
+      @companies = companies_without_employee @contract.employee
+    else
+      @companies = Company.all
+    end
+  end
+
+  def companies_without_employee employee
+    employee.nil? ? Company.all : Company.all-employee.companies
+  end
+
+  def employees_not_from_company company
+    company.nil? ? Employee.all : Employee.all-company.employees
   end
 
 end

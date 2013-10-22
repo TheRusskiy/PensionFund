@@ -10,5 +10,9 @@
 </p>
 <%= render 'contracts/list' %>
 
+<%= link_to t('employee.new_contract'), new_contract_path(
+        contract:{employee_id:@employee.id},
+        filtered:[:employee])%>
+<br>
 <%= link_to t('employee.edit'), edit_employee_path(@employee) %> |
 <%= link_to t('back'), employees_path %>

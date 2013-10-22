@@ -7,8 +7,4 @@ module EmployeesHelper
     }
   end
 
-  def employees_not_from_company company
-    return Employee.all if company.nil?
-    Employee.all-company.employees
-  end
 end

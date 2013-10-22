@@ -25,6 +25,9 @@ describe 'Payment' do
     build(:payment, year: nil).should be_invalid
     build(:payment, month: nil).should be_invalid
     build(:payment, amount: nil).should be_invalid
+    #wrong data format:
+    build(:payment, month: 13).should be_invalid
+    build(:payment, year: -1).should be_invalid
   end
 
 end

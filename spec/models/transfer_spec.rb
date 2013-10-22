@@ -14,5 +14,8 @@ describe 'Transfer' do
     build(:transfer, company: nil).should be_invalid
     build(:transfer, transfer_date: nil).should be_invalid
     build(:transfer, amount: nil).should be_invalid
+    #wrong data format:
+    build(:transfer, month: 13).should be_invalid
+    build(:transfer, year: -1).should be_invalid
   end
 end
