@@ -24,4 +24,16 @@ describe 'User' do
     build(:user_manager).role.should eq "manager"
   end
 
+  it 'must have email, password and role' do
+    build(:user, email: '').should be_invalid
+    build(:user, password: '').should be_invalid
+    build(:user, role_id: nil).should be_invalid
+  end
+
+  it 'should have unique email' do
+    u = create :user
+    build(:user, email: u.email).should be_invalid
+    lambda {create :user, email: u.email}.should raise_error
+  end
+
 end

@@ -52,6 +52,8 @@ feature 'Payments page', :slow do
   scenario 'can be created' do
     click_link(t('payment.new'), :href => new_payment_path)
     fill_in t('payment.amount'), :with => '4200'
+    fill_in t('payment.year'), :with => '2000'
+    fill_in t('payment.month'), :with => '12'
     click_button(t 'payment.update')
     payment = Payment.last
     payment.amount.should eq 4200

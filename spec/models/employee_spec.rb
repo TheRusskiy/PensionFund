@@ -17,4 +17,8 @@ describe 'Employee' do
 
     employee_companies.contracts.size.should be > 0
   end
+
+  it 'must have name' do
+    (build :employee, full_name: nil).should be_invalid
+  end
 end

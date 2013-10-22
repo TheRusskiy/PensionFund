@@ -26,7 +26,7 @@ notification :off
 #end
 
 group :specs do
-  guard 'spring', :rspec_cli => '--fail-fast --color' do
+  guard 'spring', :rspec_cli => '--color' do #--fail-fast
     watch(%r{^spec/.+_spec\.rb$})
     #watch(%r{^db/schema.rb$})                           { |m| ['rake db:test:purge', 'rake db:test:load', 'rake db:test:prepare']}
     watch(%r{^spec/factories/.+\.rb$})

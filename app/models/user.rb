@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
   validates_presence_of :password, :on => :create
+  validates_presence_of :email, :role_id
+  validates_uniqueness_of :email
 
   def role
     case role_id

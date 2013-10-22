@@ -22,4 +22,18 @@ describe 'Company' do
     company.transfers.size.should be > 0
     company.transfers[0].company.should eq company
   end
+
+  it 'has unique VAT and name' do
+    c = create :company
+    build(:company, vat: c.vat).should be_invalid
+    lambda {create :company, vat: c.vat}.should raise_error
+    build(:company, name: c.name).should be_invalid
+    lambda {create :company, name: c.name}.should raise_error
+  end
+
+  it 'has required attributes' do
+    build(:company, name: nil).should be_invalid
+    build(:company, vat: nil).should be_invalid
+    build(:company, property_type: nil).should be_invalid
+  end
 end

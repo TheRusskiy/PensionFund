@@ -22,7 +22,9 @@ FactoryGirl.define do
     sequence(:name) {|n| "private_#{n}"}
 
     factory :type_with_company do
-      companies {[create(:company)]}
+      after(:build) do |property, evaluator|
+        create_list(:company, 1, property_type: property)
+      end
     end
   end
 
@@ -33,11 +35,15 @@ FactoryGirl.define do
     association :property_type, factory: :property_type, strategy: :create
 
     factory :companies_with_employees do
-      employees {[create(:employee)]}
+      after(:build) do |company, evaluator|
+        create_list(:contract, 1, company: company)
+      end
     end
 
     factory :companies_with_transfers do
-      transfers {[create(:transfer)]}
+      after(:build) do |company, evaluator|
+        create_list(:transfer, 1, company: company)
+      end
     end
   end
 
@@ -45,6 +51,7 @@ FactoryGirl.define do
   factory :transfer do
     amount 1000
     association :company, factory: :company, strategy: :build
+    transfer_date DateTime.now
   end
 
 # EMPLOYEES
@@ -53,16 +60,18 @@ FactoryGirl.define do
 
     factory :employee_with_payments do
       ignore do
-        count 3
+        count 1
       end
 
-      after(:create) do |employee, evaluator|
+      after(:build) do |employee, evaluator|
         create_list(:payment, evaluator.count, employee: employee)
       end
     end
 
     factory :employee_with_companies do
-      companies {[create(:company)]}
+      after(:build) do |employee, evaluator|
+        create_list(:contract, 1, employee: employee)
+      end
     end
   end
 
@@ -80,8 +89,10 @@ FactoryGirl.define do
 
 # PAYMENTS
   factory :payment do
-    association :company, factory: :company, strategy: :build
-    association :employee, factory: :employee, strategy: :build
+    association :company, factory: :company, strategy: :create
+    association :employee, factory: :employee, strategy: :create
+    sequence(:year) {|n| n+2000}
+    month{rand(12)+1}
     amount 1000
   end
 

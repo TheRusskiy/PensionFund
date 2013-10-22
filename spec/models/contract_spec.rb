@@ -12,4 +12,18 @@ describe 'Contract' do
     contract.job_position.name.should match /Job_\d/
   end
 
+  it 'is unique on company-employee' do
+    c = create :company
+    e = create :employee
+    create :contract, company: c, employee: e
+    build(:contract, company: c, employee: e).should be_invalid
+    lambda {create :contract, company: c, employee: e}.should raise_error
+  end
+
+  it 'has required attributes' do
+    build(:contract, job_position: nil).should be_invalid
+    build(:contract, company: nil).should be_invalid
+    build(:contract, employee: nil).should be_invalid
+  end
+
 end

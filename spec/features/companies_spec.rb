@@ -51,6 +51,7 @@ feature 'company page', :slow do
   scenario 'can be created' do
     click_link(t('company.new'), :href => new_company_path)
     fill_in t('company.name'), :with => 'Bar Inc.'
+    fill_in t('company.vat'), :with => '6666'
     click_button(t 'company.update')
     company = Company.last
     company.name.should eq 'Bar Inc.'
