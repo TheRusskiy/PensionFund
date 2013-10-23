@@ -15,9 +15,14 @@ describe 'Guest permission' do
   it 'should allow' do
     allowed = [:index]
     res = [:companies, :employees]
+    sign_up = [:new, :create, :show]
     should permit(res, allowed)
+    should permit(:home, :index)
+    should permit(:application, [:authenticate, :logout])
+    should permit(:users, sign_up)
     should_not permit(res, Permission.actions-allowed)
-    should_not permit(Permission.resources-res, Permission.actions)
+    should_not permit(Permission.resources-res-[:users], Permission.actions)
+    should_not permit([:users], Permission.actions-sign_up)
   end
 end
 
@@ -36,6 +41,7 @@ describe 'Operator permission' do
     allowed = Permission.actions
     res = Permission.resources - [:users]
     should permit(res, allowed)
+    should permit(:home, :index)
     should permit([:users], Permission.actions-[:edit, :update, :destroy])
     should permit([:users], [:edit, :update, :destroy], user)
     should_not permit([:users], [:edit, :update, :destroy], another_user)

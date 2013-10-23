@@ -12,3 +12,12 @@ def sign_as_admin
   click_button(t 'menu.sign_in')
   admin
 end
+
+def sign_as_operator
+  operator = create :user_operator
+  visit '/'
+  fill_in(t('menu.password'), with: operator.password)
+  fill_in(t('menu.email'), with: operator.email)
+  click_button(t 'menu.sign_in')
+  operator
+end

@@ -59,4 +59,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:password, :password_confirmation, :email, :role_id)
   end
+
+  def current_resource
+    @current_resource||=User.find(params[:id]) if params[:id]
+  end
 end

@@ -12,6 +12,10 @@ class Permission
   def initialize user
     @allowed = {}
     @user = user
+
+    allow [:home],[:index]
+    allow [:application],[:authenticate, :logout]
+
     if @user.nil?
       guest_permit
       return
@@ -26,13 +30,14 @@ class Permission
   end
 
   def permit? resource, action, obj = nil
-    allowed = @allowed[[resource, action]]
+    allowed = @allowed[[resource.to_s, action.to_s]]
     return false unless allowed
     allowed == true || obj && allowed.call(obj)
   end
 
   def guest_permit
     allow([:companies, :employees], [:index, :show])
+    allow([:users], [:new, :create, :show])
   end
 
   def admin_permit
@@ -42,9 +47,7 @@ class Permission
   def operator_permit
     allow(Permission.resources - [:users], Permission.actions)
     allow([:users], Permission.actions - [:edit, :update, :destroy])
-    allow([:users], [:edit, :update, :destroy]) do |obj|
-      @user == obj
-    end
+    allow_to_change_own_user
   end
 
   def inspector_permit
@@ -63,7 +66,7 @@ class Permission
     Array(resource).each do |r|
       Array(actions).each do |a|
         #noinspection RubySimplifyBooleanInspection
-        @allowed[[r,a]]= block || true
+        @allowed[[r.to_s,a.to_s]]= block || true
       end
     end
   end
@@ -76,7 +79,7 @@ class Permission
   end
 
   def to_s
-    "Permission for #{@user.email} (#{@user.role})"
+    @user.nil? ? "Permission for guest" : "Permission for #{@user.email} (#{@user.role})"
   end
 
 end

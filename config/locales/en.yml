@@ -23,6 +23,7 @@ en:
   hello: "Hello world"
   back: "Back"
   are_you_sure: "Are you sure?"
+  not_authorized: "Not authorized"
 
   home:
     title: "Home"
