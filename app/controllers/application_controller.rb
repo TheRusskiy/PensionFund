@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :authorize
   before_action :set_locale
+  before_filter :authorize
+  before_filter :filter_forbidden_params
 
 
   def current_user
@@ -29,6 +30,19 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, notice: I18n.t('menu.signed_in')
     else
       redirect_to root_path, alert: I18n.t('menu.wrong_credentials')
+    end
+  end
+
+  def filter_forbidden_params
+    params.each_pair do |resource, parameters|
+      params[resource] = nil unless current_permission.permit_parameters? resource, parameters
+      if parameters.respond_to? :each_key
+        filtered_params = parameters.clone
+        parameters.each_key do |p|
+          filtered_params.delete(p) unless current_permission.permit_parameters? resource, p
+        end
+        params[resource]=filtered_params
+      end
     end
   end
 

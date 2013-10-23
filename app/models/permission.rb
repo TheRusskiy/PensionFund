@@ -11,6 +11,7 @@ class Permission
 
   def initialize user
     @allowed = {}
+    @forbidden_params = {}
     @user = user
 
     allow [:home],[:index]
@@ -35,9 +36,13 @@ class Permission
     allowed == true || obj && allowed.call(obj)
   end
 
+  def permit_parameters? resource, parameter
+    true unless @forbidden_params[[resource.to_s, parameter.to_s]]
+  end
+
   def guest_permit
     allow([:companies, :employees], [:index, :show])
-    allow([:users], [:new, :create, :show])
+    forbid_parameters(:user, :role_id)
   end
 
   def admin_permit
@@ -46,8 +51,9 @@ class Permission
 
   def operator_permit
     allow(Permission.resources - [:users], Permission.actions)
-    allow([:users], Permission.actions - [:edit, :update, :destroy])
+    allow([:users], [:index, :show])
     allow_to_change_own_user
+    forbid_parameters(:user, :role_id)
   end
 
   def inspector_permit
@@ -56,14 +62,15 @@ class Permission
     res = Permission.resources - [:users]
     allow(res, allowed)
     allow_to_change_own_user
+    forbid_parameters(:user, :role_id)
   end
 
   def manager_permit
     inspector_permit
   end
 
-  def allow resource, actions, &block
-    Array(resource).each do |r|
+  def allow resources, actions, &block
+    Array(resources).each do |r|
       Array(actions).each do |a|
         #noinspection RubySimplifyBooleanInspection
         @allowed[[r.to_s,a.to_s]]= block || true
@@ -71,8 +78,16 @@ class Permission
     end
   end
 
+  def forbid_parameters  resources, parameters
+    Array(resources).each do |r|
+      Array(parameters).each do |a|
+        @forbidden_params[[r.to_s,a.to_s]]= true
+      end
+    end
+  end
+
   def allow_to_change_own_user
-    allow([:users], Permission.actions - [:edit, :update, :destroy])
+    allow([:users], Permission.actions - [:edit, :update, :destroy, :create, :new])
     allow([:users], [:edit, :update]) do |obj|
       @user == obj
     end

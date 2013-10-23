@@ -80,4 +80,9 @@ Contract.create(company: ssau, employee: deryabkin, job_position: teacher)
 Contract.create(company: ssau, employee: gavrilov, job_position: teacher)
 Contract.create(company: ssau, employee: ispravnikova, job_position: teacher)
 
+User.create(role_id: 0, email:'admin', password: '1234', password_confirmation: '1234')
+User.create(role_id: 1, email:'operator', password: '1234', password_confirmation: '1234')
+User.create(role_id: 2, email:'inspector', password: '1234', password_confirmation: '1234')
+User.create(role_id: 3, email:'manager', password: '1234', password_confirmation: '1234')
+
 # use rake db:reset to fully recreate db and seeds

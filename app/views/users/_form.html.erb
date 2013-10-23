@@ -26,10 +26,12 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-    <div class="field">
-      <%= f.label :role_id, t('user.role') %><br>
-      <%= f.select :role_id, role_items %>
-    </div>
+  <%= if_permitted :user, :role_id do
+    "<div class='field'>
+      #{f.label :role_id, t('user.role')}<br>
+      #{f.select :role_id, role_items}
+      </div>"
+  end %>
 
   <div class="actions">
     <%= f.submit t('user.update')%>
