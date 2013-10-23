@@ -73,7 +73,7 @@ class Permission
 
   def allow_to_change_own_user
     allow([:users], Permission.actions - [:edit, :update, :destroy])
-    allow([:users], [:edit, :update, :destroy]) do |obj|
+    allow([:users], [:edit, :update]) do |obj|
       @user == obj
     end
   end

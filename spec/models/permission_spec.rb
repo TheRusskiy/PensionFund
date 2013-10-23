@@ -42,8 +42,10 @@ describe 'Operator permission' do
     res = Permission.resources - [:users]
     should permit(res, allowed)
     should permit(:home, :index)
-    should permit([:users], Permission.actions-[:edit, :update, :destroy])
-    should permit([:users], [:edit, :update, :destroy], user)
+    user_permissions = [:index, :show]
+    should permit([:users], user_permissions)
+    should permit([:users], user_permissions+[:edit, :update], user)
+    should_not permit([:users], [:destroy], user)
     should_not permit([:users], [:edit, :update, :destroy], another_user)
   end
 end
@@ -58,8 +60,10 @@ describe 'Inspector permission' do
     res = Permission.resources - [:users]
     should permit(res, allowed)
     should_not permit(res, disallowed)
-    should permit([:users], Permission.actions-[:edit, :update, :destroy])
-    should permit([:users], [:edit, :update, :destroy], user)
+    user_permissions = [:index, :show]
+    should permit([:users], user_permissions)
+    should permit([:users], user_permissions+[:edit, :update], user)
+    should_not permit([:users], [:destroy], user)
     should_not permit([:users], [:edit, :update, :destroy], another_user)
   end
 end
@@ -74,8 +78,10 @@ describe 'Manager permission' do
     res = Permission.resources - [:users]
     should permit(res, allowed)
     should_not permit(res, disallowed)
-    should permit([:users], Permission.actions-[:edit, :update, :destroy])
-    should permit([:users], [:edit, :update, :destroy], user)
+    user_permissions = [:index, :show]
+    should permit([:users], user_permissions)
+    should permit([:users], user_permissions+[:edit, :update], user)
+    should_not permit([:users], [:destroy], user)
     should_not permit([:users], [:edit, :update, :destroy], another_user)
   end
 end

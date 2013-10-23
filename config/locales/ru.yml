@@ -1,0 +1,163 @@
+# encoding: UTF-8
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  back: "Назад"
+  are_you_sure: "Вы уверены?"
+  not_authorized: "Действие запрещено"
+
+  home:
+    title: "Домашняя страница"
+
+  menu:
+    employees: "Сотрудники"
+    companies: "Организации"
+    transfers: "Перечисления"
+    contracts: "Контракты"
+    property_types: "Виды собственности"
+    job_positions: "Должности"
+    users: "Пользователи системы"
+    password: "Пароль"
+    email: "Email"
+    sign_up: "Зарегистрироваться"
+    sign_in: "Вход"
+    signed_in: "Вы успешно вошли"
+    signed_out: "Вы успешно вышли"
+    wrong_credentials: "Неверные почта/пароль"
+    log_out: "Вы успешно вышли"
+    ru: "Ру"
+    en: "En"
+
+  user:
+    title: "Пользователи"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    email: "Email address"
+    update: "Сохранить"
+    new: "Новый пользователь"
+    editing_title: "редактировать пользователя"
+    new_title: "Создание пользователя"
+    role: "Роль"
+    password: "Ваш пароль"
+    password_confirmation: "Подтверждение пароля"
+    successfully_created: "Пользователь был успешно зарегистрирован"
+    successfully_updated: "Данные пользователя успешно изменены"
+    guest: "Гость"
+    admin: "Админ"
+    operator: "Оператор"
+    inspector: "Инспектор"
+    manager: "Заведующий"
+
+  employee:
+    title: "Сотрудники"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    id: 'Страховой номер'
+    full_name: "Полное имя"
+    update: "Сохранить"
+    new: "Новый сотрудник"
+    editing_title: "Редактирование сотрудника"
+    new_title: "Создание сотрудника"
+    new_contract: "Добавить компанию"
+
+  property:
+    title: "Виды собственности"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    update: "Сохранить"
+    new: "Новый вид собственности"
+    name: "Название"
+    editing_title: "Редактирование вида собственности"
+    new_title: "Создание вида собственности"
+
+  transfer:
+    title: "Перечисления"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    update: "Сохранить"
+    new: "Новое перечисление"
+    editing_title: "Редактировать перечисление"
+    new_title: "Создание перечисления"
+    transfer_date: "Дата перевода"
+    amount: "Сумма"
+    month: "Месяц"
+    year: "Год"
+    company: "Организация"
+
+  position:
+    title: "Должности"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    update: "Сохранить"
+    new: "Новая должность"
+    name: "Название"
+    editing_title: "Редактировать должность"
+    new_title: "Создание должности"
+
+  company:
+    title: "Организации"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    update: "Сохранить"
+    new: "Новая организация"
+    editing_title: "Редактирование организации"
+    new_title: "New company"
+    id: "Номер в пенсионном фонде"
+    vat: "ИНН"
+    name: "Название"
+    district: "Район"
+    property_type: "Вид собственности"
+    new_contract: "Добавить нового сотрудника"
+
+  payment:
+    title: "Начисления"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    update: "Сохранить"
+    new: "Новое начисление"
+    editing_title: "Редактировать начисление"
+    new_title: "Создание начисления"
+    year: "Год"
+    month: "Месяц"
+    amount: "Сумма"
+    company: "Организация"
+    employee: "Сотрудник"
+
+  contract:
+    title: "Контракты"
+    destroy: "Удалить"
+    show: "Детали"
+    edit: "Редактировать"
+    update: "Сохранить"
+    new: "Новый контракт"
+    editing_title: "Редактирование контракта"
+    new_title: "Новый контракт"
+    company: "Организаций"
+    job_position: "Должность"
+    employee: "Сотрудник"

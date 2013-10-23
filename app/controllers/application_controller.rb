@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :authorize
+  before_action :set_locale
 
 
   def current_user
@@ -35,6 +36,12 @@ class ApplicationController < ActionController::Base
     unless current_permission.permit?(params[:controller], params[:action], current_resource)
       redirect_to root_url, alert: I18n.t('not_authorized')
     end
+  end
+
+  def set_locale
+    locale = params[:locale] || session[:locale] || :en
+    session[:locale] = locale
+    I18n.locale=locale
   end
 
   def logout
