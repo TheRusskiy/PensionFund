@@ -4,14 +4,17 @@ feature 'Users page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do
-    #sign_in 'admin', 'pass'
+    sign_as_admin
     @user = create :user
     @another_user = create :user
     visit'/users'
   end
 
   after(:each) do
-    save_and_open_page if example.exception
+    if example.exception and not $page_opened
+      save_and_open_page
+      $page_opened = true
+    end
   end
 
   scenario 'should display users' do

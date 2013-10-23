@@ -11,7 +11,7 @@ RSpec::Matchers.define :permit do |resources, actions, obj = nil|
 end
 
 describe 'Guest permission' do
-  subject{ Permission.new build(:user_guest)}
+  subject{ Permission.new nil}
   it 'should allow' do
     allowed = [:index]
     res = [:companies, :employees]

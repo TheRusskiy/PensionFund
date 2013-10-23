@@ -12,12 +12,15 @@ class Permission
   def initialize user
     @allowed = {}
     @user = user
+    if @user.nil?
+      guest_permit
+      return
+    end
     case @user.role_id
-      when 0 then guest_permit
-      when 1 then admin_permit
-      when 2 then operator_permit
-      when 3 then inspector_permit
-      when 4 then manager_permit
+      when 0 then admin_permit
+      when 1 then operator_permit
+      when 2 then inspector_permit
+      when 3 then manager_permit
       else raise Exception.new 'Unknown user role!'
     end
   end

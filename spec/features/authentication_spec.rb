@@ -9,7 +9,10 @@ feature 'Authentication', :slow do
   #end
 
   after(:each) do
-    save_and_open_page if example.exception
+    if example.exception and not $page_opened
+      save_and_open_page
+      $page_opened = true
+    end
   end
 
   scenario 'should be able to sign in' do
@@ -25,7 +28,7 @@ feature 'Authentication', :slow do
   end
 
   scenario 'log out' do
-    admin = login_as_admin
+    admin = sign_as_admin
     expect(page).not_to have_content(t 'user.guest')
     click_button(t 'menu.log_out')
     expect(page).to have_content(t 'user.guest')

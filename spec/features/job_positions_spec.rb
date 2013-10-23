@@ -4,14 +4,17 @@ feature 'Position type page', :slow do
   include Rails.application.routes.url_helpers
 
   before(:each) do
-    #sign_in 'admin', 'pass'
+    sign_as_admin
     @position = create :job_position
     @another_position = create :job_position
     visit'/job_positions'
   end
 
   after(:each) do
-    save_and_open_page if example.exception
+    if example.exception and not $page_opened
+      save_and_open_page
+      $page_opened = true
+    end
   end
 
   scenario 'display property types' do

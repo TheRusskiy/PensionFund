@@ -10,11 +10,11 @@ FactoryGirl.define do
       password_confirmation '4321'
     end
 
-    factory(:user_guest) {role_id 0}
-    factory(:user_admin) {role_id 1}
-    factory(:user_operator) {role_id 2}
-    factory(:user_inspector) {role_id 3}
-    factory(:user_manager) {role_id 4}
+    #factory(:user_guest) {role_id 0}
+    factory(:user_admin) {role_id 0}
+    factory(:user_operator) {role_id 1}
+    factory(:user_inspector) {role_id 2}
+    factory(:user_manager) {role_id 3}
   end
 
 # PROPERTY TYPES
@@ -32,7 +32,7 @@ FactoryGirl.define do
   factory :company do
     sequence(:name) {|n| "Company_#{n}"}
     sequence(:vat) {|n| n }
-    association :property_type, factory: :property_type, strategy: :create
+    association :property_type, factory: :property_type, strategy: :build
 
     factory :companies_with_employees do
       after(:build) do |company, evaluator|
@@ -89,8 +89,8 @@ FactoryGirl.define do
 
 # PAYMENTS
   factory :payment do
-    association :company, factory: :company, strategy: :create
-    association :employee, factory: :employee, strategy: :create
+    association :company, factory: :company, strategy: :build
+    association :employee, factory: :employee, strategy: :build
     sequence(:year) {|n| n+2000}
     month{rand(12)+1}
     amount 1000

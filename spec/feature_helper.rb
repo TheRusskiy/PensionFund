@@ -4,7 +4,7 @@ require 'capybara/rspec'
 #Capybara.javascript_driver = :webkit
 include Capybara::DSL
 
-def login_as_admin
+def sign_as_admin
   admin = create :user_admin
   visit '/'
   fill_in(t('menu.password'), with: admin.password)
