@@ -29,6 +29,7 @@ en:
     title: "Home"
 
   menu:
+    home: "Home"
     employees: "Employees"
     companies: "Companies"
     transfers: "Transfers"
@@ -46,6 +47,7 @@ en:
     log_out: "Log out"
     ru: "Ру"
     en: "En"
+    payments: "Payments"
 
   user:
     title: "Users"
@@ -80,6 +82,8 @@ en:
     editing_title: "Editing employee"
     new_title: "New employee"
     new_contract: "Add new company"
+    successfully_created: "Employee was successfully created"
+    successfully_updated: "Employee was successfully updated"
 
   property:
     title: "Property types"
@@ -91,6 +95,8 @@ en:
     name: "Name"
     editing_title: "Editing property type"
     new_title: "New property type"
+    successfully_created: "Property type was successfully created"
+    successfully_updated: "Property type was successfully updated"
 
   transfer:
     title: "Transfers"
@@ -106,6 +112,8 @@ en:
     month: "Month"
     year: "Year"
     company: "Company"
+    successfully_created: "Transfer was successfully created"
+    successfully_updated: "Transfer was successfully updated"
 
   position:
     title: "Job positions"
@@ -117,6 +125,8 @@ en:
     name: "Name"
     editing_title: "Editing job position"
     new_title: "New job position"
+    successfully_created: "Job position was successfully created"
+    successfully_updated: "Job position was successfully updated"
 
   company:
     title: "Companies"
@@ -133,6 +143,8 @@ en:
     district: "District"
     property_type: "Property type"
     new_contract: "Add new employee"
+    successfully_created: "Company was successfully created"
+    successfully_updated: "Company was successfully updated"
 
   payment:
     title: "Payments"
@@ -148,6 +160,8 @@ en:
     amount: "Amount"
     company: "Company"
     employee: "Employee"
+    successfully_created: "Payment was successfully created"
+    successfully_updated: "Payment was successfully updated"
 
   contract:
     title: "Contracts"
@@ -161,5 +175,7 @@ en:
     company: "Company"
     job_position: "Job position"
     employee: "Employee"
+    successfully_created: "Contract was successfully created"
+    successfully_updated: "Contract was successfully updated"
 
 

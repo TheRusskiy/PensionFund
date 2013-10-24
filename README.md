@@ -25,3 +25,4 @@ Just my little university project
   * Manager specific query
   * <del>forbid role change for all non admins</del>
   * fill home page with help information
+  * add links to details page

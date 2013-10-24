@@ -5,4 +5,8 @@ class Payment < ActiveRecord::Base
   validates_uniqueness_of :employee, scope: [:company, :year, :month], :allow_nil => true
   validates :month, :inclusion => { :in => 1..12 }
   validates :year, :inclusion => { :in => 1900..2100 }
+
+  def to_s
+    company.name+', '+employee.full_name+year+'.'+month
+  end
 end

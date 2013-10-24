@@ -6,4 +6,8 @@ class Contract < ActiveRecord::Base
   # without allow_nil validator will die on nil records,
   # presence_of filters out nil fields anyway:
   validates_uniqueness_of :employee, scope: :company, :allow_nil => true
+
+  def to_s
+    employee.full_name+' > '+company.name+' > '+job_position.name
+  end
 end

@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
       else raise Exception.new "Unknown role_id"
     end
   end
+
+  def to_s
+    email+': '+role
+  end
 end

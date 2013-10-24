@@ -28,7 +28,7 @@ class PropertyTypesController < ApplicationController
 
     respond_to do |format|
       if @property_type.save
-        format.html { redirect_to @property_type, notice: 'Property type was successfully created.' }
+        format.html { redirect_to @property_type, notice: t('property.successfully_created') }
         format.json { render action: 'show', status: :created, location: @property_type }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class PropertyTypesController < ApplicationController
   def update
     respond_to do |format|
       if @property_type.update(property_type_params)
-        format.html { redirect_to @property_type, notice: 'Property type was successfully updated.' }
+        format.html { redirect_to @property_type, notice: t('property.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

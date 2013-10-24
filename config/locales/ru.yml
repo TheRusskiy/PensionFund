@@ -29,6 +29,7 @@ ru:
     title: "Домашняя страница"
 
   menu:
+    home: "Главная"
     employees: "Сотрудники"
     companies: "Организации"
     transfers: "Перечисления"
@@ -46,6 +47,7 @@ ru:
     log_out: "Выйти"
     ru: "Ру"
     en: "En"
+    payments: "Начисления"
 
   user:
     title: "Пользователи"
@@ -80,6 +82,8 @@ ru:
     editing_title: "Редактирование сотрудника"
     new_title: "Создание сотрудника"
     new_contract: "Добавить компанию"
+    successfully_created: "Сотрудник был создан успешно"
+    successfully_updated: "Сотрудник был изменён успешно"
 
   property:
     title: "Виды собственности"
@@ -91,6 +95,8 @@ ru:
     name: "Название"
     editing_title: "Редактирование вида собственности"
     new_title: "Создание вида собственности"
+    successfully_created: "Вид собственности был создан успешно"
+    successfully_updated: "Вид собственности был изменён успешно"
 
   transfer:
     title: "Перечисления"
@@ -106,6 +112,8 @@ ru:
     month: "Месяц"
     year: "Год"
     company: "Организация"
+    successfully_created: "Перечисление было создано успешно"
+    successfully_updated: "Перечисление было изменено успешно"
 
   position:
     title: "Должности"
@@ -117,6 +125,8 @@ ru:
     name: "Название"
     editing_title: "Редактировать должность"
     new_title: "Создание должности"
+    successfully_created: "Должность была создана успешно"
+    successfully_updated: "Должность была изменена успешно"
 
   company:
     title: "Организации"
@@ -133,6 +143,8 @@ ru:
     district: "Район"
     property_type: "Вид собственности"
     new_contract: "Добавить нового сотрудника"
+    successfully_created: "Организация была создана успешно"
+    successfully_updated: "Организация была изменена успешно"
 
   payment:
     title: "Начисления"
@@ -148,6 +160,8 @@ ru:
     amount: "Сумма"
     company: "Организация"
     employee: "Сотрудник"
+    successfully_created: "Начисление было создано успешно"
+    successfully_updated: "Начисление было изменено успешно"
 
   contract:
     title: "Контракты"
@@ -161,3 +175,5 @@ ru:
     company: "Организаций"
     job_position: "Должность"
     employee: "Сотрудник"
+    successfully_created: "Контракт был создан успешно"
+    successfully_updated: "Контракт был изменён успешно"

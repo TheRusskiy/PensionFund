@@ -28,7 +28,7 @@ class TransfersController < ApplicationController
 
     respond_to do |format|
       if @transfer.save
-        format.html { redirect_to @transfer, notice: 'Transfer was successfully created.' }
+        format.html { redirect_to @transfer, notice: t('transfer.successfully_created') }
         format.json { render action: 'show', status: :created, location: @transfer }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class TransfersController < ApplicationController
   def update
     respond_to do |format|
       if @transfer.update(transfer_params)
-        format.html { redirect_to @transfer, notice: 'Transfer was successfully updated.' }
+        format.html { redirect_to @transfer, notice: t('transfer.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

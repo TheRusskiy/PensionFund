@@ -28,7 +28,7 @@ class JobPositionsController < ApplicationController
 
     respond_to do |format|
       if @job_position.save
-        format.html { redirect_to @job_position, notice: 'Job position was successfully created.' }
+        format.html { redirect_to @job_position, notice: t('position.successfully_created') }
         format.json { render action: 'show', status: :created, location: @job_position }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class JobPositionsController < ApplicationController
   def update
     respond_to do |format|
       if @job_position.update(job_position_params)
-        format.html { redirect_to @job_position, notice: 'Job position was successfully updated.' }
+        format.html { redirect_to @job_position, notice: t('position.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
