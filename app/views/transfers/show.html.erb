@@ -14,13 +14,8 @@
 </p>
 
 <p>
-  <strong><%= t('transfer.month')%>:</strong>
-  <%= @transfer.month %>
-</p>
-
-<p>
-  <strong><%= t('transfer.year')%>:</strong>
-  <%= @transfer.year %>
+  <strong><%=t('transfer.date')%>:</strong>
+  <%= (t('date.month_names')[@transfer.month || 0]).to_s+' '+(@transfer.year || '').to_s %>
 </p>
 
 <%= link_to t('transfer.edit'), edit_transfer_path(@transfer) %> |

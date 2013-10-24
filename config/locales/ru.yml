@@ -107,7 +107,8 @@ ru:
     new: "Новое перечисление"
     editing_title: "Редактировать перечисление"
     new_title: "Создание перечисления"
-    transfer_date: "Дата перевода"
+    transfer_date: "Дата поручения"
+    date: "Дата перевода"
     amount: "Сумма"
     month: "Месяц"
     year: "Год"
@@ -162,6 +163,7 @@ ru:
     employee: "Сотрудник"
     successfully_created: "Начисление было создано успешно"
     successfully_updated: "Начисление было изменено успешно"
+    date: "Дата платежа"
 
   contract:
     title: "Контракты"

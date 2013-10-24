@@ -9,13 +9,8 @@
 </p>
 
 <p>
-  <strong><%=t('payment.year')%>:</strong>
-  <%= @payment.year %>
-</p>
-
-<p>
-  <strong><%=t('payment.month')%>:</strong>
-  <%= @payment.month %>
+  <strong><%=t('payment.date')%>:</strong>
+  <%= t('date.month_names')[@payment.month || 0].to_s+' '+(@payment.year || '').to_s %>
 </p>
 
 <p>
