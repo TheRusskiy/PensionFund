@@ -19,8 +19,10 @@ Just my little university project
   * <del>main page</del>
   * <del>CSS</del>
   * <del>seed data</del>
-  * <del>do something with annoying "back" buttons</del>
   * <del>forbid role change for all non admins</del>
+  * <del>create employee from new contract page</del>
+  * <del>create company from new contract page</del>
+  * do something with annoying "back" buttons
   * hide unauthorized elements
   * Inspector specific query
   * Manager specific query

@@ -19,6 +19,8 @@
     <%= f.label :full_name, t('employee.full_name') %>
     <%= f.text_field :full_name %>
   </div>
+  <% redirect||=nil %>
+  <%= hidden_field_tag :redirect, redirect%>
   <div class="actions">
     <%= f.submit t('employee.update') %>
   </div>

@@ -9,6 +9,10 @@ class ContractsController < ApplicationController
 
   def new
     filter_data
+    # this controller also renders employee and company _form pages, so
+    # variables have to be set:
+    @employee = Employee.new
+    @company = Company.new
   end
 
   def create
@@ -56,7 +60,15 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    params.require(:contract).permit(:company_id, :employee_id, :job_position_id) if params[:contract]
+    if params[:company_id]
+      params[:contract]||={}
+      params[:contract][:company_id]=params[:company_id]
+    end
+    if params[:employee_id]
+      params[:contract]||={}
+      params[:contract][:employee_id]=params[:employee_id] if params[:employee_id]
+    end
+    params.require(:contract).permit! if params[:contract]
   end
 
   def set_filter

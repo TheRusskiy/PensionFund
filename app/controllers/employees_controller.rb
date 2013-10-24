@@ -30,7 +30,17 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: t('employee.successfully_created') }
+        format.html {
+          if params[:redirect].blank?
+            redirect_to @employee, notice: t('employee.successfully_created')
+          else
+            url = URI(params[:redirect])
+            redirect_query = Rack::Utils.parse_query url.query
+            # add/replace current employee in redirect link:
+            url.query = redirect_query.merge(employee_id: @employee.id).to_query
+            redirect_to url.to_s, notice: t('employee.successfully_created')
+          end
+        }
         format.json { render action: 'show', status: :created, location: @employee }
       else
         format.html { render action: 'new' }

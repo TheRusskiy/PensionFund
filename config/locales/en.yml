@@ -27,7 +27,14 @@ en:
 
   home:
     title: "Home"
-    content: "eng"
+    content: |
+      <p>
+        Welcome to pension fund.
+      <p>
+      <p>
+        We make sure you die rich.
+      <p>
+
   menu:
     home: "Home"
     employees: "Employees"
@@ -48,6 +55,11 @@ en:
     ru: "Ру"
     en: "En"
     payments: "Payments"
+
+  footer:
+    versions: "Versions"
+    authors: "Ishkov Dmitry, Shabanov Anton, group 6502"
+    about: "Pension fund system, &copy; 2013 - Chair of information technologies SSAU"
 
   user:
     title: "Users"
@@ -77,7 +89,7 @@ en:
     edit: "Edit"
     id: 'Insurance number'
     full_name: "Full name"
-    update: "Save"
+    update: "Save employee"
     new: "New Employee"
     editing_title: "Editing employee"
     new_title: "New employee"
@@ -134,7 +146,7 @@ en:
     destroy: "Destroy"
     show: "Show"
     edit: "Edit"
-    update: "Save"
+    update: "Save company"
     new: "New company"
     editing_title: "Editing company"
     new_title: "New company"

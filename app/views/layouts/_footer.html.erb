@@ -1,15 +1,15 @@
 <footer>
   <div class="keeper">
     <div class="left">
-      "Пенсионный фонд", &copy; 2013 - Кафедра ИСТ СГАУ
+      <%= raw t 'footer.about' %>
     </div>
     <div class="left offset100">
-      Версии:
+      <%= raw t 'footer.versions' %>:
       <%= link_to t('menu.ru'), url_for(locale: 'ru') %>
       <%= link_to t('menu.en'), url_for(locale: 'en') %>
     </div>
     <div class="right">
-      Дмитрий Ишков, Антон Шабанов, гр. 6502
+      <%= raw t 'footer.authors' %>
     </div>
   </div>
 </footer>

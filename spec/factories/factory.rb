@@ -52,6 +52,8 @@ FactoryGirl.define do
     amount 1000
     association :company, factory: :company, strategy: :build
     transfer_date DateTime.now
+    month 1
+    year 2000
   end
 
 # EMPLOYEES

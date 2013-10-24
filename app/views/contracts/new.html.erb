@@ -1,5 +1,22 @@
 <h3><%=t('contract.new_title')%></h3>
 <div class="content">
-  <%= link_to t('back'), contracts_path %>
 </div>
 <%= render 'form' %>
+<%= unless filtered? :employee
+    render 'employees/form',
+    #redirect back to this page
+    redirect: url_for(
+            company_id: @contract.company_id,
+            employee_id:@contract.employee_id,
+            filtered: @filtered)
+    end
+%>
+<%= unless filtered? :company
+    render 'companies/form',
+    #redirect back to this page
+    redirect: url_for(
+            company_id: @contract.company_id,
+            employee_id:@contract.employee_id,
+            filtered: @filtered)
+    end
+%>

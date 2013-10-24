@@ -45,15 +45,6 @@ feature 'company page', :slow do
     expect(page).not_to have_content(another_contract.employee.full_name)
   end
 
-  scenario 'should allow creation of new contract with current company pre filled'+
-            ' and current employees filtered out' do
-    current_contract = create :contract, company: @company
-    click_link(t('company.show'), :href => company_path(@company))
-    click_link(t('company.new_contract'))
-    current_path.should eq new_contract_path
-    find_field(t'contract.company').find('option[selected]').text.should eq @company.name
-    expect(page).not_to have_content(current_contract.employee.full_name)
-  end
 
   scenario 'can be edited' do
     foo = create :property_type, name: 'foo property'
@@ -61,7 +52,7 @@ feature 'company page', :slow do
 
     click_link(t('company.edit'), :href => edit_company_path(@company))
     find_field(t 'company.name').value.should eq @company.name
-    fill_in t('company.name'), :with => 'Foo Inc.'
+    fill_in t('company.name'), with: 'Foo Inc.'
 
     select('foo property', :from => t('company.property_type'))
 
@@ -73,11 +64,41 @@ feature 'company page', :slow do
 
   scenario 'can be created' do
     click_link(t('company.new'), :href => new_company_path)
-    fill_in t('company.name'), :with => 'Bar Inc.'
-    fill_in t('company.vat'), :with => '6666'
+    fill_in t('company.name'), with: 'Bar Inc.'
+    fill_in t('company.vat'), with: '6666'
     click_button(t 'company.update')
     company = Company.last
     company.name.should eq 'Bar Inc.'
     current_path.should eq company_path(company)
+  end
+
+  scenario 'should allow creation of new contract with current company pre filled'+
+           ' and current employees filtered out' do
+    current_contract = create :contract, company: @company
+    click_link(t('company.show'), :href => company_path(@company))
+    click_link(t('company.new_contract'))
+    current_path.should eq new_contract_path
+    find_field(t'contract.company').find('option[selected]').text.should eq @company.name
+    expect(page).not_to have_content(current_contract.employee.full_name)
+  end
+
+  scenario 'should allow creation of new employee and then redirect to contract creation' +
+           ' with current company and newly created employee pre filled'+
+           ' and current employees filtered out' do
+    current_contract = create :contract, company: @company
+    click_link(t('company.show'), :href => company_path(@company))
+    click_link(t('company.new_contract'))
+
+    fill_in t('employee.full_name'), with: 'foo_bar'
+    click_button t('employee.update')
+
+    current_path.should eq new_contract_path
+    employee = Employee.last
+    employee.full_name.should eq 'foo_bar'
+
+    find_field(t'contract.company').find('option[selected]').text.should eq @company.name
+    find_field(t'contract.employee').find('option[selected]').text.should eq employee.full_name
+
+    expect(page).not_to have_content(current_contract.employee.full_name)
   end
 end

@@ -1,7 +1,7 @@
 module ApplicationHelper
   def filtered? property
     @filtered||=[]
-    @filtered.include? property
+    @filtered.include? property.to_s
   end
 
   def if_permitted(controller, action, &block)
