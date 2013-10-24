@@ -69,6 +69,8 @@ class PropertyTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_type_params
-      params.require(:property_type).permit(:name)
+      ps = params.require(:property_type).permit(:name)
+      ps[:full_name] && ps[:full_name].squish!
+      ps
     end
 end

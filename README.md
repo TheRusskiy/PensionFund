@@ -12,17 +12,17 @@ Just my little university project
   * <del>editing from other entities</del>
   * <del>authentication</del>
   * <del>authorization</del>
-  * hide unauthorized elements
-  * main page
   * <del>shared top menu</del>
   * <del>shared information at bottom</del>
   * <del>russian translation</del>
   * <del>translation switch (via cookie?)</del>
-  * CSS
+  * <del>main page</del>
+  * <del>CSS</del>
   * <del>seed data</del>
-  * do something with annoying "back" buttons?
+  * <del>do something with annoying "back" buttons</del>
+  * <del>forbid role change for all non admins</del>
+  * hide unauthorized elements
   * Inspector specific query
   * Manager specific query
-  * <del>forbid role change for all non admins</del>
   * fill home page with help information
   * add links to details page

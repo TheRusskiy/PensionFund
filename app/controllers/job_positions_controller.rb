@@ -69,6 +69,8 @@ class JobPositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_position_params
-      params.require(:job_position).permit(:name)
+      ps = params.require(:job_position).permit(:name)
+      ps[:name] && ps[:name].squish!
+      ps
     end
 end
