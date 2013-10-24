@@ -31,14 +31,10 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
         format.html {
-          if params[:redirect].blank?
-            redirect_to @company, notice: t('company.successfully_created')
+          if redirect_link
+            redirect_to redirect_link(company_id: @company.id), notice: t('company.successfully_created')
           else
-            url = URI(params[:redirect])
-            redirect_query = Rack::Utils.parse_query url.query
-            # add/replace current company in redirect link:
-            url.query = redirect_query.merge(company_id: @company.id).to_query
-            redirect_to url.to_s, notice: t('company.successfully_created')
+            redirect_to @company, notice: t('company.successfully_created')
           end
         }
         format.json { render action: 'show', status: :created, location: @company }
