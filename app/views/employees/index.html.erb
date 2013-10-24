@@ -1,6 +1,9 @@
-<h1><%=t 'employee.title' %></h1>
+<h3><%=t 'employee.title' %></h3>
+<div class="content">
+    <%= link_to t('employee.new'), new_employee_path %>
+</div>
 
-<table>
+<table class="content-table">
   <thead>
   <tr>
     <th><%= t 'employee.id' %></th>
@@ -13,7 +16,7 @@
 
   <tbody>
   <% @employees.each do |employee| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= employee.id %></td>
         <td><%= employee.full_name %></td>
         <td><%= link_to t('employee.show'), employee %></td>
@@ -23,7 +26,3 @@
   <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('employee.new'), new_employee_path %>

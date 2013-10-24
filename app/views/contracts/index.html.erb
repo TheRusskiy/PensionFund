@@ -1,6 +1,6 @@
-<h1><%=t('contract.title')%></h1>
-
+<h3><%=t('contract.title')%></h3>
+<div class="content">
+  <%= link_to t('contract.new'), new_contract_path %>
+</div>
 <%= render 'list' %>
-<br>
 
-<%= link_to t('contract.new'), new_contract_path %>

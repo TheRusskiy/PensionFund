@@ -8,10 +8,15 @@
 </head>
 <body>
 <%= render 'layouts/menu' %>
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-<%= yield %>
-
+<section>
+  <div class="keeper inner">
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+      <p id="alert"><%= alert %></p>
+    </div>
+    <%= yield %>
+</div>
+    </section>
 </body>
 <%= render 'layouts/footer' %>
 </html>

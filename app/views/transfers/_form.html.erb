@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :company_id, t('transfer.company') %><br>
+    <%= f.label :company_id, t('transfer.company') %>
     <%= f.select(:company_id, company_items ) %>
   </div>
   <div class="field">
-    <%= f.label :transfer_date, t('transfer.transfer_date') %><br>
+    <%= f.label :transfer_date, t('transfer.transfer_date') %>
     <%= f.date_select :transfer_date %>
   </div>
   <div class="field">
-    <%= f.label :amount, t('transfer.amount') %><br>
+    <%= f.label :amount, t('transfer.amount') %>
     <%= f.number_field :amount %>
   </div>
   <div class="field">
-    <%= label :month, t('transfer.month'), for: :transfer_month%><br>
+    <%= label :month, t('transfer.month'), for: :transfer_month%>
     <%= select_month(@transfer.month, id: :month, field_name: :month, prefix: :transfer) %>
   </div>
   <div class="field">
-    <%= label :year, t('transfer.year'), for: :transfer_year %><br>
+    <%= label :year, t('transfer.year'), for: :transfer_year %>
     <%= select_year(@transfer.year, id: :year, field_name: :year, prefix: :transfer) %>
   </div>
   <div class="actions">

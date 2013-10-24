@@ -1,6 +1,8 @@
-<h1><%= t 'property.title'%></h1>
-
-<table>
+<h3><%= t 'property.title'%></h3>
+<div class="content">
+  <%= link_to t('property.new'), new_property_type_path %>
+</div>
+<table class="content-table">
   <thead>
     <tr>
       <th><%= t('property.name')%></th>
@@ -12,7 +14,7 @@
 
   <tbody>
     <% @property_types.each do |property_type| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= property_type.name %></td>
         <td><%= link_to t('property.show'), property_type %></td>
         <td><%= link_to t('property.edit'), edit_property_type_path(property_type) %></td>
@@ -21,7 +23,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('property.new'), new_property_type_path %>

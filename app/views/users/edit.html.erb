@@ -1,6 +1,6 @@
-<h1><%= t('user.editing_title')%></h1>
-
+<h3><%= t('user.editing_title')%></h3>
+<div class="content">
+  <%= link_to t('user.show'), @user %> |
+  <%= link_to t('back'), user_path %>
+</div>
 <%= render 'form' %>
-
-<%= link_to t('user.show'), @user %> |
-<%= link_to t('back'), user_path %>

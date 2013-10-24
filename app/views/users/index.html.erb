@@ -1,6 +1,8 @@
-<h1><%= t('user.title')%></h1>
-
-<table>
+<h3><%= t('user.title')%></h3>
+<div class="content">
+  <%= link_to t('user.new'), new_user_path %>
+</div>
+<table class="content-table">
   <thead>
     <tr>
       <th><%= t('user.email')%></th>
@@ -13,7 +15,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= user.email %></td>
         <td><%= user.role %></td>
         <td><%= link_to t('user.show'), user %></td>
@@ -23,7 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('user.new'), new_user_path %>

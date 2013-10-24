@@ -1,6 +1,8 @@
-<h1><%= t('transfer.title')%></h1>
-
-<table>
+<h3><%= t('transfer.title')%></h3>
+<div class="content">
+  <%= link_to t('transfer.new'), new_transfer_path %>
+</div>
+<table class="content-table">
   <thead>
     <tr>
       <th><%= t('transfer.company')%></th>
@@ -16,7 +18,7 @@
 
   <tbody>
     <% @transfers.each do |transfer| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= transfer.company %></td>
         <td><%= transfer.transfer_date %></td>
         <td><%= transfer.amount %></td>
@@ -29,7 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('transfer.new'), new_transfer_path %>

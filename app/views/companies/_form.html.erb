@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id, t('company.id') %><br>
+    <%= f.label :id, t('company.id') %>
     <%= f.number_field :id %>
   </div>
   <div class="field">
-    <%= f.label :vat, t('company.vat') %><br>
+    <%= f.label :vat, t('company.vat') %>
     <%= f.number_field :vat %>
   </div>
   <div class="field">
-    <%= f.label :name, t('company.name') %><br>
+    <%= f.label :name, t('company.name') %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :district, t('company.district') %><br>
+    <%= f.label :district, t('company.district') %>
     <%= f.text_field :district %>
   </div>
   <div class="field">
-    <%= f.label :property_type_id, t('company.property_type') %><br>
+    <%= f.label :property_type_id, t('company.property_type') %>
     <%= f.select(:property_type_id, property_type_items ) %>
   </div>
   <div class="actions">

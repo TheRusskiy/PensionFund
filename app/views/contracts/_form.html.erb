@@ -12,17 +12,17 @@
     <% end %>
 
     <div class="<%= filtered?('company') ? "hidden" : "field"%>" >
-      <%= f.label :company_id, t('contract.company') %><br>
+      <%= f.label :company_id, t('contract.company') %>
       <%= f.select :company_id, company_items(@companies)%>
     </div>
 
     <div class="<%= filtered?('employee') ? "hidden" : "field"%>" >
-      <%= f.label :employee_id, t('contract.employee') %><br>
+      <%= f.label :employee_id, t('contract.employee') %>
       <%= f.select :employee_id, employee_items(@employees)%>
     </div>
 
     <div class="field">
-      <%= f.label :job_position_id, t('contract.job_position') %><br>
+      <%= f.label :job_position_id, t('contract.job_position') %>
       <%= f.select :job_position_id, job_position_items %>
     </div>
 

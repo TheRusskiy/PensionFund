@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :company_id, t('payment.company') %><br>
+    <%= f.label :company_id, t('payment.company') %>
     <%= f.select :company_id, company_items %>
   </div>
 
   <div class="field">
-    <%= f.label :employee_id, t('payment.employee') %><br>
+    <%= f.label :employee_id, t('payment.employee') %>
     <%= f.select :employee_id, employee_items %>
   </div>
 
   <div class="field">
-    <%= label :month, t('payment.month'), for: :payment_month%><br>
+    <%= label :month, t('payment.month'), for: :payment_month%>
     <%= select_month(@payment.month, id: :month, field_name: :month, prefix: :payment) %>
   </div>
 
     <div class="field">
-      <%= label :year, t('payment.year'), for: :payment_year %><br>
+      <%= label :year, t('payment.year'), for: :payment_year %>
       <%= select_year(@payment.year, id: :year, field_name: :year, prefix: :payment) %>
     </div>
 
   <div class="field">
-    <%= f.label :amount, t('payment.amount') %><br>
+    <%= f.label :amount, t('payment.amount') %>
     <%= f.number_field :amount %>
   </div>
 

@@ -1,6 +1,8 @@
-<h1><%= t('position.title')%></h1>
-
-<table>
+<h3><%= t('position.title')%></h3>
+<div class="content">
+  <%= link_to t('position.new'), new_job_position_path %>
+</div>
+<table class="content-table">
   <thead>
     <tr>
       <th><%= t('position.name')%></th>
@@ -12,7 +14,7 @@
 
   <tbody>
     <% @job_positions.each do |job_position| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= job_position.name %></td>
         <td><%= link_to t('position.show'), job_position %></td>
         <td><%= link_to t('position.edit'), edit_job_position_path(job_position) %></td>
@@ -21,7 +23,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('position.new'), new_job_position_path %>

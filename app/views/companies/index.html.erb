@@ -1,6 +1,8 @@
-<h1><%= t('company.title')%></h1>
-
-<table>
+<h3><%= t('company.title')%></h3>
+<div class="content">
+  <%= raw "<td>#{link_to t('company.new'), new_company_path}</td>" if permitted? :companies, :new %>
+</div>
+<table class="content-table">
   <thead>
     <tr>
       <th><%= t('company.id')%></th>
@@ -16,7 +18,7 @@
 
   <tbody>
     <% @companies.each do |company| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= company.id %></td>
         <td><%= company.vat %></td>
         <td><%= company.name %></td>
@@ -36,5 +38,3 @@
   </tbody>
 </table>
 
-<br>
-<%= raw "<td>#{link_to t('company.new'), new_company_path}</td>" if permitted? :companies, :new %>

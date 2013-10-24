@@ -1,6 +1,8 @@
-<h1><%=t('payment.title')%></h1>
-
-<table>
+<h3><%=t('payment.title')%></h3>
+<div class="content">
+  <%= link_to t('payment.new'), new_payment_path %>
+</div>
+<table class="content-table">
   <thead>
     <tr>
       <th><%=t('payment.company')%></th>
@@ -16,7 +18,7 @@
 
   <tbody>
     <% @payments.each do |payment| %>
-      <tr>
+      <tr class="item-wrapper">
         <td><%= payment.company.name %></td>
         <td><%= payment.employee.full_name %></td>
         <td><%= payment.year %></td>
@@ -29,7 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('payment.new'), new_payment_path %>

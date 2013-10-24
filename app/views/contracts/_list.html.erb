@@ -1,4 +1,4 @@
-<table>
+<table class="content-table">
   <thead>
   <tr>
     <%= raw"<th>#{t('contract.company')}</th>" unless filtered? 'company'%>
@@ -12,7 +12,7 @@
 
   <tbody>
   <% @contracts.each do |contract| %>
-      <tr>
+      <tr class="item-wrapper">
         <%= raw"<td>#{contract.company.name}</th>" unless filtered? 'company'%>
         <%= raw"<td>#{contract.employee.full_name}</th>" unless filtered? 'employee'%>
         <%= raw"<td>#{contract.job_position.name}</th>" unless filtered? 'job_position'%>

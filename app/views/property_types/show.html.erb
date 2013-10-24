@@ -1,7 +1,11 @@
+<h3><%= @property_type.name %></h3>
+<div class="content">
+  <%= link_to t('property.edit'), edit_property_type_path(@property_type) %> |
+  <%= link_to t('back'), property_types_path %>
+</div>
+<div class="content">
 <p>
   <strong><%= t 'property.name'%>:</strong>
   <%= @property_type.name %>
 </p>
-
-<%= link_to t('property.edit'), edit_property_type_path(@property_type) %> |
-<%= link_to t('back'), property_types_path %>
+</div>

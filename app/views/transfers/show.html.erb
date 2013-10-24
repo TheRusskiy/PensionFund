@@ -1,3 +1,8 @@
+<h3><%= @transfer.company %></h3>
+<div class="content">
+  <%= link_to t('transfer.edit'), edit_transfer_path(@transfer) %> |
+  <%= link_to t('back'), transfers_path %>
+</div>
 <p>
   <strong><%= t('transfer.company')%>:</strong>
   <%= @transfer.company %>
@@ -17,6 +22,3 @@
   <strong><%=t('transfer.date')%>:</strong>
   <%= (t('date.month_names')[@transfer.month || 0]).to_s+' '+(@transfer.year || '').to_s %>
 </p>
-
-<%= link_to t('transfer.edit'), edit_transfer_path(@transfer) %> |
-<%= link_to t('back'), transfers_path %>

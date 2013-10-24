@@ -1,5 +1,7 @@
-<h1><%= t 'employee.new_title' %></h1>
+<h3><%= t 'employee.new_title' %></h3>
+
+<div class="content">
+  <%= link_to t('back'), employees_path %>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to t('back'), employees_path %>

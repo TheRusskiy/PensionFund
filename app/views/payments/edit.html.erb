@@ -1,6 +1,8 @@
-<h1><%=t('payment.editing_title')%></h1>
-
+<h3><%=t('payment.editing_title')%></h3>
+<div class="content">
+  <%= link_to t('payment.show'), @payment %> |
+  <%= link_to t('back'), payments_path %>
+</div>
 <%= render 'form' %>
 
-<%= link_to t('payment.show'), @payment %> |
-<%= link_to t('back'), payments_path %>
+

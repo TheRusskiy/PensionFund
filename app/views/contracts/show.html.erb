@@ -1,3 +1,8 @@
+<h3><%= @contract.company.name %></h3>
+<div class="content">
+  <%= link_to t('contract.edit'), edit_contract_path(@contract) %> |
+  <%= link_to t('back'), contracts_path %>
+</div>
 <p>
   <strong><%=t('contract.company')%>:</strong>
   <%= @contract.company.name %>
@@ -12,6 +17,3 @@
   <strong><%=t('contract.job_position')%>:</strong>
   <%= @contract.job_position.name %>
 </p>
-
-<%= link_to t('contract.edit'), edit_contract_path(@contract) %> |
-<%= link_to t('back'), contracts_path %>

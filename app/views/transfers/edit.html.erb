@@ -1,6 +1,7 @@
-<h1><%= t('transfer.editing_title')%></h1>
+<h3><%= t('transfer.editing_title')%></h3>
+<div class="content">
+  <%= link_to t('transfer.show'), @transfer %> |
+  <%= link_to t('back'), transfers_path %>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to t('transfer.show'), @transfer %> |
-<%= link_to t('back'), transfers_path %>

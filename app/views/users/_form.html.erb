@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email,t('user.email') %><br>
+    <%= f.label :email,t('user.email') %>
     <%= f.text_field :email %>
   </div>
 
   <div class="field">
-    <%= f.label :password, t('user.password') %><br />
+    <%= f.label :password, t('user.password') %>
     <%= f.password_field :password %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, t('user.password_confirmation') %><br />
+    <%= f.label :password_confirmation, t('user.password_confirmation') %>
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <%= if_permitted :user, :role_id do
+  <%= if_param_permitted :user, :role_id do
     "<div class='field'>
-      #{f.label :role_id, t('user.role')}<br>
+      #{f.label :role_id, t('user.role')}
       #{f.select :role_id, role_items}
       </div>"
   end %>

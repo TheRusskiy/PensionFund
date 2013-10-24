@@ -1,28 +1,49 @@
-<div>
-  <ul>
+<header>
+  <div class="keeper inner">
+  <div class="keeper">
+    <div class="left">
+      <!--<a href="<%= link_to t('menu.home') %>"><img class="logo" src="<%= asset_path('logo.gif') %>" /></a>-->
+      <%= link_to image_tag( asset_path('logo.gif')), root_path, class: 'logo' %>
+    </div>
+    <div class="right menu">
+      <ul class="main-menu">
+        <li class="user">
+          <% if current_user %>
+              <strong><%= current_user.email%></strong>
+              <%=form_tag('/logout', method: 'get') do %>
+                  <%= submit_tag(t('menu.log_out'), class: 'mini-button') %>
+              <% end %>
+          <% else %>
+              <strong><a id="login-link" href="#login-form"><%= t('menu.sign_in') %></a></strong>
+              <div id="login-form">
+                  <%=form_tag('/login', method: 'get', :class => 'disable_on_submit') do %>
+                      <%= label_tag(:email, t('menu.email')) %>
+                      <%= text_field_tag(:email) %>
+                      <%= label_tag(:password, t('menu.password')) %>
+                      <%= text_field_tag(:password) %>
+                      <%= submit_tag(t'menu.sign_in') %>
+                  <% end %>
+              </div>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <div class="keeper main-menu-offset">
+  <ul class="main-menu">
     <li><%= link_to t('menu.home'), root_path %></li>
     <li><%= link_to t('menu.employees'), employees_path %></li>
     <li><%= link_to t('menu.companies'), companies_path %></li>
     <li><%= link_to t('menu.transfers'), transfers_path %></li>
-    <li><%= link_to t('menu.payments'), payments_path %></li>
+    <%= if_permitted :payments, :index do
+      "<li> #{link_to t('menu.payments'), payments_path} </li>"
+    end %>
+
     <li><%= link_to t('menu.contracts'), contracts_path %></li>
     <li><%= link_to t('menu.property_types'), property_types_path %></li>
     <li><%= link_to t('menu.job_positions'), job_positions_path %></li>
     <li><%= link_to t('menu.users'), users_path %></li>
-    <li>
-      <% if current_user %>
-          <strong><%= current_user.email%></strong>
-          <%=form_tag('/logout', method: 'get') do %>
-              <%= submit_tag(t'menu.log_out') %>
-          <% end %>
-      <% else %>
-          <%=form_tag('/login', method: 'get') do %>
-              <%= label_tag(:email, t('menu.email')) %>
-              <%= text_field_tag(:email) %>
-              <%= label_tag(:password, t('menu.password')) %>
-              <%= text_field_tag(:password) %>
-              <%= submit_tag(t'menu.sign_in') %>
-          <% end %>
-      <% end %>
   </ul>
-</div>
+    </div>
+  </div>
+</header>

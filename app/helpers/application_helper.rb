@@ -4,17 +4,28 @@ module ApplicationHelper
     @filtered.include? property
   end
 
-  def if_permitted(controller_resource, action_or_parameter, &block)
-    if current_permission.permit? controller_resource, action_or_parameter \
-    or current_permission.permit_parameters? controller_resource, action_or_parameter
+  def if_permitted(controller, action, &block)
+    if current_permission.permit? controller, action
       raw(block.call)
     else
       raw("<div class='hidden'>#{block.call}</div>")
     end
   end
 
-  def permitted?( controller_resource, action_or_parameter)
-    current_permission.permit? controller_resource, action_or_parameter \
-    or current_permission.permit_parameters? controller_resource, action_or_parameter
+  def if_param_permitted(resource, parameter, &block)
+    if current_permission.permit_parameters? resource, parameter
+      raw(block.call)
+    else
+      raw("<div class='hidden'>#{block.call}</div>")
+    end
+  end
+
+  def permitted?( controller, action)
+    current_permission.permit? controller, action
+  end
+
+  def permitted_param?( resource, parameter)
+    current_permission.permit? resource, parameter \
+    or current_permission.permit_parameters? resource, parameter
   end
 end
