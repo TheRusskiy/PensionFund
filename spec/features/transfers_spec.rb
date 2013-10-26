@@ -23,13 +23,13 @@ feature 'transfer page', :slow do
   end
 
   scenario 'delete from list-page' do
-    click 'a', text: t('transfer.destroy'), href: transfer_path(@another_transfer)
+    click t('transfer.destroy'), href: transfer_path(@another_transfer)
     Transfer.exists?(@another_type).should be_false
     Transfer.exists?(@transfer).should be_true
   end
 
   scenario 'has link to details' do
-    click 'a', text: t('transfer.show'), href: transfer_path(@transfer)
+    click t('transfer.show'), href: transfer_path(@transfer)
     expect(page).to have_content(@transfer.company.name)
     expect(page).not_to have_content(@another_transfer.company.name)
   end
@@ -37,22 +37,22 @@ feature 'transfer page', :slow do
   scenario 'can be edited' do
     foo = create :company, name: 'foo company'
 
-    click 'a', text: t('transfer.edit'), href: edit_transfer_path(@transfer)
+    click t('transfer.edit'), href: edit_transfer_path(@transfer)
     find_field(t 'transfer.amount').value.should eq @transfer.amount.to_s
     fill_in t('transfer.amount'), :with => '4200'
 
     select('foo company', :from => t('transfer.company'))
 
-    click_button(t 'transfer.update')
+    click t 'transfer.update'
     @transfer.reload.amount.should eq 4200
     @transfer.company.should eq foo
     current_path.should eq transfers_path
   end
 
   scenario 'can be created' do
-    click_link(t('transfer.new'), :href => new_transfer_path)
+    click t('transfer.new'), :href => new_transfer_path
     fill_in t('transfer.amount'), :with => '4200'
-    click_button(t 'transfer.update')
+    click t 'transfer.update'
     transfer = Transfer.last
     transfer.amount.should eq 4200
     current_path.should eq transfer_path(transfer)
@@ -80,10 +80,10 @@ feature 'transfer page', :slow do
     select c1.to_s, from: t('transfer.company_filter_value')
     select 2010, from: t('transfer.year_filter_value')
     select I18n.t('date.month_names')[1], from: t('transfer.month_filter_value')
-    click_button t'transfer.apply_filter'
+    click t'transfer.apply_filter'
 
-    click 'a', text: t('transfer.edit'), href: edit_transfer_path(t4)
-    click_button(t 'transfer.update')
+    click t('transfer.edit'), href: edit_transfer_path(t4)
+    click t 'transfer.update'
 
     expect(page).not_to have_content(t1.transfer_date)
     expect(page).not_to have_content(t2.transfer_date)
