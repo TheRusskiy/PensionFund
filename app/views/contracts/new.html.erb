@@ -5,23 +5,11 @@
 <%unless filtered? :employee %>
     <br>
     <h4><%= t'employee.new_title'%></h4>
-    <%= render 'employees/form',
-               #redirect back to this page
-               redirect: url_for(
-                       company_id: @contract.company_id,
-                       employee_id:@contract.employee_id,
-                       filtered: @filtered)
-    %>
+    <%= render 'employees/form'%>
 <% end %>
 
 <%unless filtered? :company %>
     <br>
     <h4><%= t'company.new_title'%></h4>
-    <%= render 'companies/form',
-    #redirect back to this page
-    redirect: url_for(
-            company_id: @contract.company_id,
-            employee_id:@contract.employee_id,
-            filtered: @filtered)
-    %>
+    <%= render 'companies/form'%>
 <% end %>

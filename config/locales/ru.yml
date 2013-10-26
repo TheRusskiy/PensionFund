@@ -132,7 +132,13 @@ ru:
     company: "Организация"
     successfully_created: "Перечисление было создано успешно"
     successfully_updated: "Перечисление было изменено успешно"
+    company_filter: "Группировать по организации"
+    date_filter: "Группировать по дате"
+    company_filter_value: "Организация"
+    year_filter_value: "Год"
+    month_filter_value: "Месяц"
 
+    apply_filter: "Применить фильтр"
   position:
     title: "Должности"
     destroy: "Удалить"

@@ -1,6 +1,4 @@
 class ContractsController < ApplicationController
-  include ApplicationHelper
-  before_action :set_filter
   before_action :set_contract, only: [:show, :edit, :update, :destroy, :new]
 
   def index
@@ -13,6 +11,10 @@ class ContractsController < ApplicationController
     # variables have to be set:
     @employee = Employee.new
     @company = Company.new
+    self.redirect=(url_for(
+        company_id: @contract.company_id,
+        employee_id:@contract.employee_id,
+        filtered: @filtered))
   end
 
   def create
@@ -69,10 +71,6 @@ class ContractsController < ApplicationController
       params[:contract][:employee_id]=params[:employee_id] if params[:employee_id]
     end
     params.require(:contract).permit! if params[:contract]
-  end
-
-  def set_filter
-    @filtered = params[:filtered]
   end
 
   def filter_data

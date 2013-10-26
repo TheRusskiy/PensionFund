@@ -28,4 +28,12 @@ module ApplicationHelper
     current_permission.permit? resource, parameter \
     or current_permission.permit_parameters? resource, parameter
   end
+
+  def redirect
+    params[:redirect]
+  end
+
+  def redirect= value
+    params[:redirect]=value
+  end
 end

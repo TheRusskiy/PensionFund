@@ -51,7 +51,7 @@ FactoryGirl.define do
   factory :transfer do
     amount 1000
     association :company, factory: :company, strategy: :build
-    transfer_date DateTime.now
+    sequence(:transfer_date) {|n| DateTime.now+n}
     month 1
     year 2000
   end

@@ -31,11 +31,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.save
         format.html {
-          if redirect_link
-            redirect_to redirect_link(employee_id: @employee.id), notice: t('employee.successfully_created')
-          else
-            redirect_to @employee, notice: t('employee.successfully_created')
-          end
+          redirect_to redirect_link(employee_id: @employee.id) || @employee, notice: t('employee.successfully_created')
         }
         format.json { render action: 'show', status: :created, location: @employee }
       else

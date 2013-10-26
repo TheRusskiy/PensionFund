@@ -2,6 +2,37 @@
 <div class="content">
   <%= link_to t('transfer.new'), new_transfer_path %>
 </div>
+<%= form_tag transfers_path, method: :get do %>
+    <div class="field">
+      <%= label_tag :company_id, t('transfer.company_filter_value'), for: :company_id  %>
+      <%= select_tag :company_id, options_from_collection_for_select(@companies, \
+                     :id, :name, selected: params[:company_id]), id: :company_id %>
+    </div>
+
+    <div class="field">
+      <%= label :month, t('transfer.month_filter_value'), for: :month%>
+      <%= select_month(params[:month].to_i||DateTime.now, id: :month, prefix: 'month', discard_type: true) %>
+    </div>
+
+    <div class="field">
+      <%= label :year, t('transfer.year_filter_value'), for: :year %>
+      <%= select_year(params[:year].to_i||DateTime.now, id: :year, prefix: 'year', discard_type: true) %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :company_filter, t('transfer.company_filter'), for: 'company_filter' %>
+      <%= check_box_tag "filtered[]", 'company', filtered?(:company), id:'company_filter' %>
+    </div>
+
+    <div class="field">
+    <%= label_tag :date_filter, t('transfer.date_filter'), for: 'date_filter' %>
+    <%= check_box_tag "filtered[]", 'date', filtered?(:date), id:'date_filter' %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag t('transfer.apply_filter') %>
+    </div>
+<% end %>
 <table class="content-table">
   <thead>
     <tr>
@@ -24,9 +55,9 @@
         <td><%= transfer.amount %></td>
         <td><%= transfer.month %></td>
         <td><%= transfer.year %></td>
-        <td><%= link_to t('transfer.show'), transfer %></td>
-        <td><%= link_to t('transfer.edit'), edit_transfer_path(transfer) %></td>
-        <td><%= link_to t('transfer.destroy'), transfer, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <td><%= link_to t('transfer.show'), transfer_path(transfer, redirect: @this_page) %></td>
+        <td><%= link_to t('transfer.edit'), edit_transfer_path(transfer, redirect: @this_page) %></td>
+        <td><%= link_to t('transfer.destroy'), transfer_path(transfer, redirect: @this_page), method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>

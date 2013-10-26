@@ -127,6 +127,12 @@ en:
     company: "Company"
     successfully_created: "Transfer was successfully created"
     successfully_updated: "Transfer was successfully updated"
+    company_filter: "Company filtering"
+    date_filter: "Date filtering"
+    company_filter_value: "Company"
+    year_filter_value: "Year"
+    month_filter_value: "Month"
+    apply_filter: "Apply filter"
 
   position:
     title: "Job positions"

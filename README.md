@@ -22,8 +22,8 @@ Just my little university project
   * <del>forbid role change for all non admins</del>
   * <del>create employee from new contract page</del>
   * <del>create company from new contract page</del>
+  * <del>create transfers index page by company/month/year with actions redirecting back</del>
   * find bug fancybox sign_in
-  * create transfers index page by company/month/year with actions redirecting back
   * create payments index page by company/month/year with actions redirecting back
   * do something with annoying "back" buttons
   * hide unauthorized elements
@@ -31,3 +31,4 @@ Just my little university project
   * Manager specific query
   * fill home page with help information
   * add links to details page
+  * refactor css

@@ -31,11 +31,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
         format.html {
-          if redirect_link
-            redirect_to redirect_link(company_id: @company.id), notice: t('company.successfully_created')
-          else
-            redirect_to @company, notice: t('company.successfully_created')
-          end
+          redirect_to redirect_link(company_id: @company.id) ||@company, notice: t('company.successfully_created')
         }
         format.json { render action: 'show', status: :created, location: @company }
       else

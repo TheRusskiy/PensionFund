@@ -4,7 +4,19 @@ class TransfersController < ApplicationController
   # GET /transfers
   # GET /transfers.json
   def index
-    @transfers = Transfer.all
+    conditions = {}
+    conditions.merge! company_id: params[:company_id] if filtered? :company
+    conditions.merge! year: params[:year] if filtered? :date
+    conditions.merge! month: params[:month] if filtered? :date
+        #year: params[:year] if filtered? :date,
+        #                                 month: params[:month]
+    @transfers = Transfer.where(conditions)
+    @companies = Company.all
+    @this_page = url_for(year: params[:year],
+                         month: params[:month],
+                         company_id: params[:company_id],
+                         'filtered[company]' => params[:filtered] && params[:filtered].include?('company'),
+                         'filtered[date]' => params[:filtered] && params[:filtered].include?('date'))
   end
 
   # GET /transfers/1
@@ -28,7 +40,7 @@ class TransfersController < ApplicationController
 
     respond_to do |format|
       if @transfer.save
-        format.html { redirect_to @transfer, notice: t('transfer.successfully_created') }
+        format.html { redirect_to redirect_link || @transfer, notice: t('transfer.successfully_created') }
         format.json { render action: 'show', status: :created, location: @transfer }
       else
         format.html { render action: 'new' }
@@ -42,7 +54,7 @@ class TransfersController < ApplicationController
   def update
     respond_to do |format|
       if @transfer.update(transfer_params)
-        format.html { redirect_to @transfer, notice: t('transfer.successfully_updated') }
+        format.html { redirect_to redirect_link || @transfer, notice: t('transfer.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +68,7 @@ class TransfersController < ApplicationController
   def destroy
     @transfer.destroy
     respond_to do |format|
-      format.html { redirect_to transfers_url }
+      format.html { redirect_to redirect_link || transfers_url }
       format.json { head :no_content }
     end
   end
