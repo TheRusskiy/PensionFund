@@ -30,17 +30,19 @@ module ApplicationHelper
   end
 
   def redirect_link extra_params = {}
-    return nil if params[:redirect].blank?
-    return params[:redirect] if extra_params.empty?
+    link = flash[:redirect] unless flash[:redirect].blank?
+    link = params[:redirect] unless params[:redirect].blank?
+    return nil if link.blank?
+    return link if extra_params.empty?
 
     # add/replace params in redirect link:
-    url = URI(params[:redirect])
+    url = URI(flash[:redirect])
     redirect_query = Rack::Utils.parse_query url.query
     url.query = redirect_query.merge(extra_params).to_query
     url.to_s
   end
 
   def redirect_link=link
-    params[:redirect]=link
+    flash[:redirect]=link
   end
 end

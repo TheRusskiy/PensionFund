@@ -55,7 +55,7 @@ feature 'transfer page', :slow do
     click t 'transfer.update'
     transfer = Transfer.last
     transfer.amount.should eq 4200
-    current_path.should eq transfer_path(transfer)
+    current_path.should eq transfers_path
   end
 
   scenario 'can filter transfers by company/year+month,'+

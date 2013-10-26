@@ -31,7 +31,6 @@
     <%= label :year, t('transfer.year'), for: :transfer_year %>
     <%= select_year(@transfer.year, id: :year, field_name: :year, prefix: :transfer) %>
   </div>
-  <%= hidden_field_tag :redirect, redirect_link%>
   <div class="actions">
     <%= f.submit t('transfer.update') %>
   </div>

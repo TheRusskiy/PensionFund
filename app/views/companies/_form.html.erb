@@ -31,7 +31,6 @@
     <%= f.label :property_type_id, t('company.property_type') %>
     <%= f.select(:property_type_id, property_type_items ) %>
   </div>
-  <%= hidden_field_tag :redirect, redirect_link%>
   <div class="actions">
     <%= f.submit t('company.update') %>
   </div>

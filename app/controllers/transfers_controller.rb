@@ -22,15 +22,18 @@ class TransfersController < ApplicationController
   # GET /transfers/1
   # GET /transfers/1.json
   def show
+    flash.keep
   end
 
   # GET /transfers/new
   def new
     @transfer = Transfer.new
+    flash.keep
   end
 
   # GET /transfers/1/edit
   def edit
+    flash.keep
   end
 
   # POST /transfers
