@@ -1,5 +1,5 @@
 class TransfersController < ApplicationController
-  before_action :set_transfer, only: [:show, :edit, :update, :destroy]
+  before_action :set_transfer, only: [:show, :edit, :update, :destroy, :new]
 
   # GET /transfers
   # GET /transfers.json
@@ -10,11 +10,11 @@ class TransfersController < ApplicationController
     conditions.merge! month: params[:month] if filtered? :date
     @transfers = Transfer.where(conditions)
     @companies = Company.all
-    self.redirect_link = url_for(year: params[:year],
-                         month: params[:month],
-                         company_id: params[:company_id],
-                         'filtered[company]' => filtered?(:company),
-                         'filtered[date]' => filtered?(:date))
+    @current_params = {year: params[:year],
+                       month: params[:month],
+                       company_id: params[:company_id]}
+    self.redirect_link = url_for(@current_params.merge('filtered[company]' => filtered?(:company),
+                                                       'filtered[date]' => filtered?(:date)))
   end
 
   # GET /transfers/1
@@ -25,7 +25,6 @@ class TransfersController < ApplicationController
 
   # GET /transfers/new
   def new
-    @transfer = Transfer.new
     flash.keep
   end
 
@@ -44,6 +43,7 @@ class TransfersController < ApplicationController
         format.html { redirect_to redirect_link || @transfer, notice: t('transfer.successfully_created') }
         format.json { render action: 'show', status: :created, location: @transfer }
       else
+        flash.keep
         format.html { render action: 'new' }
         format.json { render json: @transfer.errors, status: :unprocessable_entity }
       end
@@ -77,11 +77,11 @@ class TransfersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transfer
-      @transfer = Transfer.find(params[:id])
+      @transfer = params[:id].nil? ? Transfer.new(transfer_params) : Transfer.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transfer_params
-      params.require(:transfer).permit(:company_id, :transfer_date, :amount, :month, :year)
+      params.require(:transfer).permit! if params[:transfer]
     end
 end
