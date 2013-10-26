@@ -72,12 +72,4 @@ class ApplicationController < ActionController::Base
     @filtered = params[:filtered]
   end
 
-  def redirect_link extra_params = {}
-    return false if params[:redirect].blank?
-    url = URI(params[:redirect])
-    redirect_query = Rack::Utils.parse_query url.query
-    # add/replace params in redirect link:
-    url.query = redirect_query.merge(extra_params).to_query
-    url.to_s
-  end
 end

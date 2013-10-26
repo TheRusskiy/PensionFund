@@ -29,11 +29,18 @@ module ApplicationHelper
     or current_permission.permit_parameters? resource, parameter
   end
 
-  def redirect
-    params[:redirect]
+  def redirect_link extra_params = {}
+    return nil if params[:redirect].blank?
+    return params[:redirect] if extra_params.empty?
+
+    # add/replace params in redirect link:
+    url = URI(params[:redirect])
+    redirect_query = Rack::Utils.parse_query url.query
+    url.query = redirect_query.merge(extra_params).to_query
+    url.to_s
   end
 
-  def redirect= value
-    params[:redirect]=value
+  def redirect_link=link
+    params[:redirect]=link
   end
 end

@@ -11,7 +11,7 @@ class ContractsController < ApplicationController
     # variables have to be set:
     @employee = Employee.new
     @company = Company.new
-    self.redirect=(url_for(
+    self.redirect_link=(url_for(
         company_id: @contract.company_id,
         employee_id:@contract.employee_id,
         filtered: @filtered))

@@ -12,7 +12,7 @@ class TransfersController < ApplicationController
         #                                 month: params[:month]
     @transfers = Transfer.where(conditions)
     @companies = Company.all
-    @this_page = url_for(year: params[:year],
+    self.redirect_link = url_for(year: params[:year],
                          month: params[:month],
                          company_id: params[:company_id],
                          'filtered[company]' => params[:filtered] && params[:filtered].include?('company'),

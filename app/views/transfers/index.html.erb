@@ -55,9 +55,10 @@
         <td><%= transfer.amount %></td>
         <td><%= transfer.month %></td>
         <td><%= transfer.year %></td>
-        <td><%= link_to t('transfer.show'), transfer_path(transfer, redirect: @this_page) %></td>
-        <td><%= link_to t('transfer.edit'), edit_transfer_path(transfer, redirect: @this_page) %></td>
-        <td><%= link_to t('transfer.destroy'), transfer_path(transfer, redirect: @this_page), method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <td><%= link_to t('transfer.show'), transfer_path(transfer, redirect: redirect_link) %></td>
+        <td><%= link_to t('transfer.edit'), edit_transfer_path(transfer, redirect: redirect_link) %></td>
+        <td><%= link_to t('transfer.destroy'), transfer_path(transfer, redirect: redirect_link), \
+                        method: :delete, data: { confirm: t('are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
