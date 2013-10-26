@@ -32,3 +32,4 @@ Just my little university project
   * fill home page with help information
   * add links to details page
   * refactor css
+  * bigger 'notice'
