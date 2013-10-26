@@ -5,6 +5,8 @@ module ApplicationHelper
   end
 
   def if_permitted(controller, action, &block)
+    return current_permission.permit? controller, action if block.nil?
+    # if block was passed wrap it's content
     if current_permission.permit? controller, action
       raw(block.call)
     else
@@ -13,6 +15,8 @@ module ApplicationHelper
   end
 
   def if_param_permitted(resource, parameter, &block)
+    return current_permission.permit_parameters? resource, parameter if block.nil?
+    # if block was passed wrap it's content
     if current_permission.permit_parameters? resource, parameter
       raw(block.call)
     else
@@ -20,14 +24,8 @@ module ApplicationHelper
     end
   end
 
-  def permitted?( controller, action)
-    current_permission.permit? controller, action
-  end
-
-  def permitted_param?( resource, parameter)
-    current_permission.permit? resource, parameter \
-    or current_permission.permit_parameters? resource, parameter
-  end
+  alias_method :permitted?, :if_permitted
+  alias_method :param_permitted?, :if_param_permitted
 
   def redirect_link extra_params = {}
     link = flash[:redirect] unless flash[:redirect].blank?
