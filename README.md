@@ -1,5 +1,6 @@
 PensionFund
 ===========
+CI: [![Build Status](https://travis-ci.org/TheRusskiy/PensionFund.png?branch=master)](https://travis-ci.org/TheRusskiy/PensionFund)
 
 Just my little university project
 
