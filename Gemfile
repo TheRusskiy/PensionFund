@@ -50,11 +50,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :development do
   gem 'ruby-debug-base19x'
   gem 'ruby-debug-ide'
+  gem 'launchy'
 end
 
 group :test do
-  gem 'ruby-debug-base19x'
-  gem 'ruby-debug-ide'
+  gem 'rake'
   gem 'spring'
   gem 'guard'
   gem 'guard-rspec'
@@ -66,7 +66,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   #gem 'capybara-webkit'
-  gem 'launchy'
   gem 'awesome_print'
   gem 'database_cleaner'
   #gem 'cucumber-rails', :require => false

@@ -215,6 +215,7 @@ DEPENDENCIES
   launchy
   pg
   rails (= 4.0.0)
+  rake
   rspec-rails
   ruby-debug-base19x
   ruby-debug-ide
