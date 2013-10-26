@@ -2,13 +2,18 @@
 <div class="content">
   <%= link_to t('transfer.new'), new_transfer_path(transfer: @current_params) %>
 </div>
+
+<!-- FILTERS-->
 <%= form_tag transfers_path, method: :get do %>
+
+    <!--COMPANY FIELD-->
     <div class="field">
       <%= label_tag :company_id, t('transfer.company_filter_value'), for: :company_id  %>
       <%= select_tag :company_id, options_from_collection_for_select(@companies, \
                      :id, :name, selected: params[:company_id]), id: :company_id %>
     </div>
 
+    <!--DATE FIELDS-->
     <div class="field">
       <%= label :month, t('transfer.month_filter_value'), for: :month%>
       <%= select_month(params[:month].to_i||DateTime.now, id: :month, prefix: 'month', discard_type: true) %>
@@ -19,11 +24,13 @@
       <%= select_year(params[:year].to_i||DateTime.now, id: :year, prefix: 'year', discard_type: true) %>
     </div>
 
+    <!--COMPANY CHECKBOX-->
     <div class="field">
       <%= label_tag :company_filter, t('transfer.company_filter'), for: 'company_filter' %>
       <%= check_box_tag "filtered[]", 'company', filtered?(:company), id:'company_filter' %>
     </div>
 
+    <!--DATE CHECKBOX-->
     <div class="field">
     <%= label_tag :date_filter, t('transfer.date_filter'), for: 'date_filter' %>
     <%= check_box_tag "filtered[]", 'date', filtered?(:date), id:'date_filter' %>
@@ -33,6 +40,8 @@
       <%= submit_tag t('transfer.apply_filter') %>
     </div>
 <% end %>
+
+<!--TRANSFER LIST-->
 <table class="content-table">
   <thead>
     <tr>

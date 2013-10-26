@@ -1,24 +1,40 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, only: [:show, :edit, :update, :destroy, :new]
 
   # GET /payments
   # GET /payments.json
   def index
-    @payments = Payment.all
+    conditions = {}
+    conditions.merge! company_id: params[:company_id] if filtered? :company
+    conditions.merge! year: params[:year] if filtered? :date
+    conditions.merge! month: params[:month] if filtered? :date
+    conditions.merge! employee_id: params[:employee_id] if filtered? :employee
+    @payments = Payment.where(conditions)
+    @companies = Company.all
+    @employees = Employee.all
+    @current_params = {year: params[:year],
+                       month: params[:month],
+                       company_id: params[:company_id],
+                       employee_id: params[:employee_id]}
+    self.redirect_link = url_for(@current_params.merge('filtered[company]' => filtered?(:company),
+                                                       'filtered[date]' => filtered?(:date),
+                                                       'filtered[employee]' => filtered?(:employee)))
   end
 
   # GET /payments/1
   # GET /payments/1.json
   def show
+    flash.keep
   end
 
   # GET /payments/new
   def new
-    @payment = Payment.new
+    flash.keep
   end
 
   # GET /payments/1/edit
   def edit
+    flash.keep
   end
 
   # POST /payments
@@ -28,9 +44,10 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: t('payment.successfully_created') }
+        format.html { redirect_to redirect_link || @payment, notice: t('payment.successfully_created') }
         format.json { render action: 'show', status: :created, location: @payment }
       else
+        flash.keep
         format.html { render action: 'new' }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
@@ -42,9 +59,10 @@ class PaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @payment.update(payment_params)
-        format.html { redirect_to @payment, notice: t('payment.successfully_updated') }
+        format.html { redirect_to redirect_link || @payment, notice: t('payment.successfully_updated') }
         format.json { head :no_content }
       else
+        flash.keep
         format.html { render action: 'edit' }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
@@ -64,11 +82,11 @@ class PaymentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
-      @payment = Payment.find(params[:id])
+      @payment = params[:id].nil? ? Payment.new(payment_params) : Payment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:company_id, :employee_id, :year, :month, :amount)
+      params.require(:payment).permit! if params[:payment]
     end
 end

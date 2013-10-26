@@ -58,6 +58,7 @@ class TransfersController < ApplicationController
         format.html { redirect_to redirect_link || @transfer, notice: t('transfer.successfully_updated') }
         format.json { head :no_content }
       else
+        flash.keep
         format.html { render action: 'edit' }
         format.json { render json: @transfer.errors, status: :unprocessable_entity }
       end

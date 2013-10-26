@@ -23,8 +23,8 @@ Just my little university project
   * <del>create employee from new contract page</del>
   * <del>create company from new contract page</del>
   * <del>create transfers index page by company/month/year with actions redirecting back</del>
+  * <del>create payments index page by company/month/year with actions redirecting back</del>
   * find bug fancybox sign_in
-  * create payments index page by company/month/year with actions redirecting back
   * do something with annoying "back" buttons
   * hide unauthorized elements
   * Inspector specific query

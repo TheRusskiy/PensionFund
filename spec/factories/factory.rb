@@ -95,7 +95,7 @@ FactoryGirl.define do
     association :employee, factory: :employee, strategy: :build
     sequence(:year) {|n| n+2000}
     month{rand(12)+1}
-    amount 1000
+    sequence(:amount) {|n| n*15+10000}
   end
 
 end

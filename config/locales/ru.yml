@@ -137,8 +137,8 @@ ru:
     company_filter_value: "Организация"
     year_filter_value: "Год"
     month_filter_value: "Месяц"
-
     apply_filter: "Применить фильтр"
+
   position:
     title: "Должности"
     destroy: "Удалить"
@@ -187,6 +187,14 @@ ru:
     successfully_created: "Начисление было создано успешно"
     successfully_updated: "Начисление было изменено успешно"
     date: "Дата платежа"
+    company_filter: "Группировать по организации"
+    date_filter: "Группировать по дате"
+    employee_filter: "Группировать по сотруднику"
+    company_filter_value: "Организация"
+    year_filter_value: "Год"
+    month_filter_value: "Месяц"
+    employee_filter_value: "Сотрудник"
+    apply_filter: "Применить фильтр"
 
   contract:
     title: "Контракты"

@@ -45,7 +45,6 @@ describe 'Guest' do
   it 'should have following permissions' do
     allowed = [:index, :show]
     res = [:companies, :employees]
-    #sign_up = []
     should permit(res, allowed)
     should permit(:home, :index)
     should permit(:application, [:authenticate, :logout])
