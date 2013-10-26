@@ -22,17 +22,19 @@ def sign_as_operator
   operator
 end
 
-def click(text, attr_hash = {}, css = nil)
+def click(value, attr_hash = {}, css = nil)
   elements = css ? all(css) : Array(all('a'))+Array(all('input'))
   elements = elements.select do |e|
-    fits = e.text=~/#{text}/ || e.value=~/#{text}/
-    attr_hash.each_pair do |key, value|
-      fits = fits && e[key.to_s]=~/#{value}/
+    fits = e.text=~/#{value}/ || e.value=~/#{value}/
+    attr_hash.each_pair do |attr, attr_value|
+      fits = fits && e[attr.to_s]=~/#{attr_value}/
     end
     fits
   end
   raise Exception.new "Ambiguous match: \n#{prettify elements}" if elements.length>1
-  raise Exception.new "No elements match: #{text}, #{css}, #{attr_hash.to_s}" if elements.length==0
+  raise Exception.new 'No elements match:'+
+                      " #{css.nil? ? 'link/input' : "css '#{css}'"}"+
+                      " with value '#{value}' and params #{attr_hash.to_s}" if elements.length==0
   elements.first.click
 end
 
