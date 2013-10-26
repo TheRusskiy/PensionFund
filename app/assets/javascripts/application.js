@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.lockfixed.min
+//= require jquery.fancybox
+//= require mpizza

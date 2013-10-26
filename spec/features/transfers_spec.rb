@@ -24,7 +24,7 @@ feature 'transfer page', :slow do
 
   scenario 'delete from list-page' do
     click t('transfer.destroy'), href: transfer_path(@another_transfer)
-    Transfer.exists?(@another_type).should be_false
+    Transfer.exists?(@another_transfer).should be_false
     Transfer.exists?(@transfer).should be_true
   end
 
