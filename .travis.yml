@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without development
+bundler_args: --full-index --without development production
 script: bundle exec rspec spec
 env:
   - CI=true
