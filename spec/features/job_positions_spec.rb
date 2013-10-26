@@ -23,30 +23,30 @@ feature 'Position type page', :slow do
   end
 
   scenario 'delete property type from list-page' do
-    click_link(t('position.destroy'), :href => job_position_path(@another_position))
+    click(t('position.destroy'), :href => job_position_path(@another_position))
     JobPosition.exists?(@another_position).should be_false
     JobPosition.exists?(@position).should be_true
   end
 
   scenario 'should have link to details' do
-    click_link(t('position.show'), :href => job_position_path(@position))
+    click(t('position.show'), :href => job_position_path(@position))
     expect(page).to have_content(@position.name)
     expect(page).not_to have_content(@another_position.name)
   end
 
   scenario 'can be edited' do
-    click_link(t('position.edit'), :href => edit_job_position_path(@position))
+    click(t('position.edit'), :href => edit_job_position_path(@position))
     find_field(t 'position.name').value.should eq @position.name
     fill_in t('position.name'), :with => 'FooName'
-    click_button(t 'position.update')
+    click (t 'position.update')
     @position.reload.name.should eq 'FooName'
     current_path.should eq job_position_path(@position)
   end
 
   scenario 'can be created' do
-    click_link(t('position.new'), :href => new_job_position_path)
+    click(t('position.new'), :href => new_job_position_path)
     fill_in t('position.name'), :with => 'BarName'
-    click_button(t 'position.update')
+    click (t 'position.update')
     position = JobPosition.last
     position.name.should eq 'BarName'
     current_path.should eq job_position_path(position)

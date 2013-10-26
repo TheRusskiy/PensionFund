@@ -23,13 +23,13 @@ feature 'Contract page', :slow do
   end
 
   scenario 'delete from list-page' do
-    click_link(t('contract.destroy'), :href => contract_path(@another_contract))
+    click(t('contract.destroy'), :href => contract_path(@another_contract))
     Contract.exists?(@another_contract).should be_false
     Contract.exists?(@contract).should be_true
   end
 
   scenario 'has link to details' do
-    click_link(t('contract.show'), :href => contract_path(@contract))
+    click(t('contract.show'), :href => contract_path(@contract))
     expect(page).to have_content(@contract.company.name)
     expect(page).not_to have_content(@another_contract.company.name)
   end
@@ -39,14 +39,14 @@ feature 'Contract page', :slow do
     some_company = create :company
     some_position = create :job_position
 
-    click_link(t('contract.edit'), :href => edit_contract_path(@contract))
+    click(t('contract.edit'), :href => edit_contract_path(@contract))
     find_field(t 'contract.company').value.should eq @contract.company.id.to_s
 
     select(some_company.name, :from => t('contract.company'))
     select(some_position.name, :from => t('contract.job_position'))
     select(some_employee.full_name, :from => t('contract.employee'))
 
-    click_button(t 'contract.update')
+    click (t 'contract.update')
     @contract.reload.company.should eq some_company
     @contract.job_position.should eq some_position
     @contract.employee.should eq some_employee
@@ -58,11 +58,11 @@ feature 'Contract page', :slow do
     some_company = create :company
     some_position = create :job_position
 
-    click_link(t('contract.new'), :href => new_contract_path)
+    click(t('contract.new'), :href => new_contract_path)
     select(some_company.name, :from => t('contract.company'))
     select(some_position.name, :from => t('contract.job_position'))
     select(some_employee.full_name, :from => t('contract.employee'))
-    click_button(t 'contract.update')
+    click (t('contract.update'))
 
     contract = Contract.last
     contract.company.should eq some_company

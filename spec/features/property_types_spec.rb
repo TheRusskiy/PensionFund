@@ -23,30 +23,30 @@ feature 'Property type page', :slow do
   end
 
   scenario 'delete property type from list-page' do
-    click_link(t('property.destroy'), :href => property_type_path(@another_transfer))
+    click(t('property.destroy'), :href => property_type_path(@another_transfer))
     PropertyType.exists?(@another_transfer).should be_false
     PropertyType.exists?(@transfer).should be_true
   end
 
   scenario 'should have link to details' do
-    click_link(t('property.show'), :href => property_type_path(@transfer))
+    click(t('property.show'), :href => property_type_path(@transfer))
     expect(page).to have_content(@transfer.name)
     expect(page).not_to have_content(@another_transfer.name)
   end
 
   scenario 'can be edited' do
-    click_link(t('property.edit'), :href => edit_property_type_path(@transfer))
+    click(t('property.edit'), :href => edit_property_type_path(@transfer))
     find_field(t 'property.name').value.should eq @transfer.name
     fill_in t('property.name'), :with => 'FooName'
-    click_button(t 'property.update')
+    click (t 'property.update')
     @transfer.reload.name.should eq 'FooName'
     current_path.should eq property_type_path(@transfer)
   end
 
   scenario 'can be created' do
-    click_link(t('property.new'), :href => new_property_type_path)
+    click(t('property.new'), :href => new_property_type_path)
     fill_in t('property.name'), :with => 'BarName'
-    click_button(t 'property.update')
+    click (t 'property.update')
     property = PropertyType.last
     property.name.should eq 'BarName'
     current_path.should eq property_type_path(property)

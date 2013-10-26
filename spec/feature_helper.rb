@@ -25,7 +25,7 @@ end
 def click(value, attr_hash = {}, css = nil)
   elements = css ? all(css) : Array(all('a'))+Array(all('input'))
   elements = elements.select do |e|
-    fits = e.text=~/#{value}/ || e.value=~/#{value}/
+    fits = e.text=~/#{value}$/ || e.value=~/#{value}$/
     attr_hash.each_pair do |attr, attr_value|
       fits = fits && e[attr.to_s]=~/#{attr_value}/
     end

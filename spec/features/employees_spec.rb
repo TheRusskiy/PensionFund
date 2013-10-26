@@ -23,7 +23,7 @@ feature 'Employee page', :slow do
   end
 
   scenario 'delete employees from list-page' do
-    click_link(t('employee.destroy'), :href => employee_path(@another_employee))
+    click(t('employee.destroy'), :href => employee_path(@another_employee))
     Employee.exists?(@another_employee).should be_false
     Employee.exists?(@employee).should be_true
   end
@@ -33,7 +33,7 @@ feature 'Employee page', :slow do
     create :contract, employee: @employee
     another_contract = create :contract
 
-    click_link(t('employee.show'), :href => employee_path(@employee))
+    click(t('employee.show'), :href => employee_path(@employee))
     expect(page).to have_content(@employee.full_name)
     expect(page).not_to have_content(@another_employee.full_name)
 
@@ -45,18 +45,18 @@ feature 'Employee page', :slow do
   end
 
   scenario 'can be edited' do
-    click_link(t('employee.edit'), :href => edit_employee_path(@employee))
+    click(t('employee.edit'), :href => edit_employee_path(@employee))
     find_field(t 'employee.full_name').value.should eq @employee.full_name
     fill_in t('employee.full_name'), :with => 'FooName'
-    click_button(t 'employee.update')
+    click (t 'employee.update')
     @employee.reload.full_name.should eq 'FooName'
     current_path.should eq employee_path(@employee)
   end
 
   scenario 'can be created' do
-    click_link(t('employee.new'), :href => new_employee_path)
+    click(t('employee.new'), :href => new_employee_path)
     fill_in t('employee.full_name'), :with => 'BarName'
-    click_button(t 'employee.update')
+    click (t 'employee.update')
     employee = Employee.last
     employee.full_name.should eq 'BarName'
     current_path.should eq employee_path(employee)
@@ -65,8 +65,8 @@ feature 'Employee page', :slow do
   scenario 'should allow creation of new contract with current employee pre filled'+
            ' and current companies filtered out' do
     current_contract = create :contract, employee: @employee
-    click_link(t('employee.show'), :href => employee_path(@employee))
-    click_link(t('employee.new_contract'))
+    click(t('employee.show'), :href => employee_path(@employee))
+    click(t('employee.new_contract'))
     current_path.should eq new_contract_path
     find_field(t'contract.employee').find('option[selected]').text.should eq @employee.full_name
     expect(page).not_to have_content(current_contract.company.name)
@@ -76,12 +76,12 @@ feature 'Employee page', :slow do
                ' with current employee and newly created company pre filled'+
                ' and current companies filtered out' do
     current_contract = create :contract, employee: @employee
-    click_link(t('employee.show'), :href => employee_path(@employee))
-    click_link(t('employee.new_contract'))
+    click(t('employee.show'), :href => employee_path(@employee))
+    click(t('employee.new_contract'))
 
     fill_in t('company.name'), with: 'foo_bar'
     fill_in t('company.vat'), with: '12321' # <- random number, pray it's unique
-    click_button t('company.update')
+    click t('company.update')
 
     current_path.should eq new_contract_path
     company = Company.last

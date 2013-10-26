@@ -17,7 +17,7 @@ feature 'Authentication', :slow do
     fill_in(t('menu.password'), with: admin.password)
     fill_in(t('menu.email'), with: admin.email)
 
-    click_button(t 'menu.sign_in')
+    click t('menu.sign_in'),{},'input'
     expect(page).to have_content(admin.email)
     current_path.should eq root_path
   end
@@ -25,13 +25,8 @@ feature 'Authentication', :slow do
   scenario 'log out' do
     admin = sign_as_admin
     expect(page).to have_content(admin.email)
-    click_button(t 'menu.log_out')
+    click t 'menu.log_out'
     expect(page).not_to have_content(admin.email)
   end
 
-  #scenario 'sign up' do
-  #  visit '/'
-  #  click_button(t 'menu.sign_up')
-  #  current_path.should eq new_user_path
-  #end
 end

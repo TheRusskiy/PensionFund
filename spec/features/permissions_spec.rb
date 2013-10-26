@@ -32,7 +32,7 @@ feature 'Permissions for operator', :slow do
   scenario 'should not be able to set role_id' do
     visit edit_user_path(@user)
     select(t('user.admin'), :from => t('user.role'))
-    click_button(t 'user.update')
+    click (t 'user.update')
     @user.reload.role.should eq t('user.operator')
   end
 end
@@ -53,7 +53,7 @@ feature 'Permissions for admin', :slow do
   scenario 'should be able to set role_id' do
     visit edit_user_path(@user)
     select(t('user.operator'), :from => t('user.role'))
-    click_button(t 'user.update')
+    click (t 'user.update')
     @user.reload.role.should eq t('user.operator')
   end
 

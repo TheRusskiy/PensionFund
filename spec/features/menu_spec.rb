@@ -16,13 +16,13 @@ feature 'Top bar menu', :slow do
   end
 
   scenario 'should contain links to other pages' do
-    click_link(t 'menu.employees')
+    click(t 'menu.employees')
     current_path.should eq employees_path
 
-    click_link(t 'menu.companies')
+    click(t 'menu.companies')
     current_path.should eq companies_path
 
-    click_link(t 'menu.users')
+    click(t 'menu.users')
     current_path.should eq users_path
   end
 end
