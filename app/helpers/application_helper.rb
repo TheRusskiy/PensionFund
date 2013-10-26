@@ -1,7 +1,12 @@
 module ApplicationHelper
   def filtered? property
     @filtered||=[]
-    @filtered.include? property.to_s
+    if @filtered.respond_to? :keys
+      f = @filtered[property.to_s]
+      (f == 'true')||(f == true)
+    else
+      @filtered.include? property.to_s
+    end
   end
 
   def if_permitted(controller, action, &block)

@@ -8,15 +8,13 @@ class TransfersController < ApplicationController
     conditions.merge! company_id: params[:company_id] if filtered? :company
     conditions.merge! year: params[:year] if filtered? :date
     conditions.merge! month: params[:month] if filtered? :date
-        #year: params[:year] if filtered? :date,
-        #                                 month: params[:month]
     @transfers = Transfer.where(conditions)
     @companies = Company.all
     self.redirect_link = url_for(year: params[:year],
                          month: params[:month],
                          company_id: params[:company_id],
-                         'filtered[company]' => params[:filtered] && params[:filtered].include?('company'),
-                         'filtered[date]' => params[:filtered] && params[:filtered].include?('date'))
+                         'filtered[company]' => filtered?(:company),
+                         'filtered[date]' => filtered?(:date))
   end
 
   # GET /transfers/1
