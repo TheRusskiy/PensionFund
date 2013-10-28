@@ -35,3 +35,4 @@ Just my little university project
   * refactor css
   * bigger 'notice'
   * drop down menu for queries
+  * push to heroku
