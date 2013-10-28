@@ -1,7 +1,7 @@
 PensionFund
 ===========
 CI: [![Build Status](https://travis-ci.org/TheRusskiy/PensionFund.png?branch=master)](https://travis-ci.org/TheRusskiy/PensionFund)
-
+Heroku: http://pensionfund.herokuapp.com/
 Just my little university project
 
 ## todo:
@@ -27,6 +27,7 @@ Just my little university project
   * <del>create payments index page by company/month/year with actions redirecting back</del>
   * <del>Inspector specific query</del>
   * <del>Manager specific query</del>
+  * <del>push to heroku</del>
   * find bug fancybox sign_in
   * do something with annoying "back" buttons
   * hide unauthorized elements
@@ -35,4 +36,3 @@ Just my little university project
   * refactor css
   * bigger 'notice'
   * drop down menu for queries
-  * push to heroku
