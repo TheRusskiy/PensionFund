@@ -19,7 +19,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: utf-8
+  database: myapp_development
   pool: 5
-  timeout: 5000
+  password:
