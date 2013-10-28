@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 gem 'pg', group: [:development, :production]
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:test]
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -46,6 +46,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use debugger
 #gem 'debugger', group: [:development, :test]
+
+group :production do
+  gem 'unicorn'
+end
 
 group :development do
   gem 'ruby-debug-base19x'
