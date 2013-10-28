@@ -55,6 +55,8 @@ en:
     ru: "Ру"
     en: "En"
     payments: "Payments"
+    inspector: "Inspector query"
+    manager: "Manager query"
 
   footer:
     versions: "Versions"
@@ -207,4 +209,23 @@ en:
     successfully_created: "Contract was successfully created"
     successfully_updated: "Contract was successfully updated"
 
+  query:
+    title: "Queries"
+    inspector:
+      description: "Employees from certain company with average salary bigger than certain amount over selected period of time"
+      from_year: "From year"
+      to_year: "To year"
+      from_month: "From month"
+      to_month: "To month"
+      company: "From company"
+      submit: "Get report"
+      not_found: "No records satisfy selected requirements"
+      average: "Value, rubles"
+    manager:
+      description: "Average monthly salaries for companies in selected year grouped by company and month"
+      year: "For year"
+      submit: "Get report"
+      amount: "Average salary"
+      company: "Company"
+      month: "Month"
 

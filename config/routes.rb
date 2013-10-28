@@ -17,6 +17,9 @@ Pensionfund::Application.routes.draw do
 
   resources :contracts
 
+  get "queries/inspector"
+  get "queries/manager"
+
   match '/login' => 'application#authenticate', via: [:get, :post]
   match '/logout' => 'application#logout', via: [:get, :post]
 

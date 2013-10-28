@@ -25,12 +25,13 @@ Just my little university project
   * <del>create company from new contract page</del>
   * <del>create transfers index page by company/month/year with actions redirecting back</del>
   * <del>create payments index page by company/month/year with actions redirecting back</del>
+  * <del>Inspector specific query</del>
+  * <del>Manager specific query</del>
   * find bug fancybox sign_in
   * do something with annoying "back" buttons
   * hide unauthorized elements
-  * Inspector specific query
-  * Manager specific query
   * fill home page with help information
   * add links to details page
   * refactor css
   * bigger 'notice'
+  * drop down menu for queries

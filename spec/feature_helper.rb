@@ -8,7 +8,7 @@ def sign_as_admin
   visit '/'
   fill_in(t('menu.password'), with: admin.password)
   fill_in(t('menu.email'), with: admin.email)
-  click_button(t 'menu.sign_in')
+  click t('menu.sign_in'), 'input'
   admin
 end
 
@@ -17,11 +17,34 @@ def sign_as_operator
   visit '/'
   fill_in(t('menu.password'), with: operator.password)
   fill_in(t('menu.email'), with: operator.email)
-  click_button(t 'menu.sign_in')
+  click t('menu.sign_in'), 'input'
   operator
 end
 
+def sign_as_inspector
+  inspector = create :user_inspector
+  visit '/'
+  fill_in(t('menu.password'), with: inspector.password)
+  fill_in(t('menu.email'), with: inspector.email)
+  click t('menu.sign_in'), 'input'
+  inspector
+end
+
+def sign_as_manager
+  manager = create :user_manager
+  visit '/'
+  fill_in(t('menu.password'), with: manager.password)
+  fill_in(t('menu.email'), with: manager.email)
+  click t('menu.sign_in'), 'input'
+  manager
+end
+
 def click(value, attr_hash = {}, css = nil)
+  unless attr_hash.respond_to? :keys # css was passed as second element
+    css = attr_hash
+    attr_hash = {}
+  end
+
   elements = css ? all(css) : Array(all('a'))+Array(all('input'))
   elements = elements.select do |e|
     fits = e.text=~/#{value}$/ || e.value=~/#{value}$/

@@ -47,6 +47,7 @@ class Permission
 
   def admin_permit
     allow(Permission.resources, Permission.actions)
+    allow([:queries], [:manager, :inspector])
   end
 
   def operator_permit
@@ -57,16 +58,22 @@ class Permission
   end
 
   def inspector_permit
+    fund_employee_permit
+    allow([:queries], [:inspector])
+  end
+
+  def manager_permit
+    fund_employee_permit
+    allow([:queries], [:manager])
+  end
+
+  def fund_employee_permit # common for manager and inspector
     disallowed = [:new, :create, :edit, :update, :destroy]
     allowed = Permission.actions-disallowed
     res = Permission.resources - [:users]
     allow(res, allowed)
     allow_to_change_own_user
     forbid_parameters(:user, :role_id)
-  end
-
-  def manager_permit
-    inspector_permit
   end
 
   def allow resources, actions, &block

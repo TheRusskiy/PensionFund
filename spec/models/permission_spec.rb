@@ -58,6 +58,7 @@ describe 'Admin' do
   subject{ Permission.new build(:user_admin)}
   it 'should have following permissions' do
     should permit(Permission.resources, Permission.actions)
+    should permit([:queries], [:manager, :inspector])
   end
   it 'should be able to change his role' do
     should permit_parameters([:user], [:email, :password, :role_id])
@@ -77,8 +78,9 @@ describe 'Operator' do
     should permit([:users], user_permissions)
     should forbid([:users], [:new, :create])
     should permit([:users], user_permissions+[:edit, :update], user)
-    should_not permit([:users], [:destroy], user)
-    should_not permit([:users], [:edit, :update, :destroy], another_user)
+    should forbid([:users], [:destroy], user)
+    should forbid([:users], [:edit, :update, :destroy], another_user)
+    should forbid([:queries], [:manager, :inspector])
   end
   it 'should not be able to change his role' do
     should permit_parameters([:user], [:email, :password])
@@ -102,6 +104,8 @@ describe 'Inspector' do
     should permit([:users], user_permissions+[:edit, :update], user)
     should_not permit([:users], [:destroy], user)
     should_not permit([:users], [:edit, :update, :destroy], another_user)
+    should permit([:queries], [:inspector])
+    should forbid([:queries], [:manager])
   end
   it 'should not be able to change his role' do
     should permit_parameters([:user], [:email, :password])
@@ -123,8 +127,10 @@ describe 'Manager' do
     should permit([:users], user_permissions)
     should forbid([:users], [:new, :create])
     should permit([:users], user_permissions+[:edit, :update], user)
-    should_not permit([:users], [:destroy], user)
-    should_not permit([:users], [:edit, :update, :destroy], another_user)
+    should forbid([:users], [:destroy], user)
+    should forbid([:users], [:edit, :update, :destroy], another_user)
+    should forbid([:queries], [:inspector])
+    should permit([:queries], [:manager])
   end
   it 'should not be able to change his role' do
     should permit_parameters([:user], [:email, :password])

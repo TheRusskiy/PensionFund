@@ -1,0 +1,75 @@
+<h1><%=	 t'query.title'%></h1>
+<p><%= t'query.inspector.description'%></p>
+<!-- FILTERS-->
+<%= form_tag queries_inspector_path, method: :get do %>
+
+    <!--COMPANY FIELD-->
+    <div class="field">
+      <%= label_tag :company_id, t('query.inspector.company'), for: :company_id  %>
+      <%= select_tag :company_id, options_from_collection_for_select(@companies, \
+                     :id, :name, selected: params[:company_id]), id: :company_id %>
+    </div>
+
+    <!--FROM DATE FIELDS-->
+    <div class="field">
+      <%= label :from_month, t('query.inspector.from_month'), for: :from_month%>
+      <%= select_month(params[:from_month].to_i||DateTime.now, id: :from_month, prefix: 'from_month', discard_type: true) %>
+    </div>
+
+    <div class="field">
+      <%= label :from_year, t('query.inspector.from_year'), for: :from_year %>
+      <%= select_year(params[:from_year].to_i||DateTime.now, id: :from_year, prefix: 'from_year', discard_type: true) %>
+    </div>
+
+    <!--TO DATE FIELDS-->
+    <div class="field">
+      <%= label :to_month, t('query.inspector.to_month'), for: :to_month%>
+      <%= select_month(params[:to_month].to_i||DateTime.now, id: :to_month, prefix: 'to_month', discard_type: true) %>
+    </div>
+
+    <div class="field">
+      <%= label :to_year, t('query.inspector.to_year'), for: :to_year %>
+      <%= select_year(params[:to_year].to_i||DateTime.now, id: :to_year, prefix: 'to_year', discard_type: true) %>
+    </div>
+
+    <!--AVERAGE-->
+    <div class="field">
+      <%= label :average, t('query.inspector.average'), for: :average %>
+      <%= number_field_tag 'average', params[:average]||0, in: 0...100000, id: :average %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag t('query.inspector.submit') %>
+    </div>
+<% end %>
+
+<%if @result %>
+    <!--RESULT LIST-->
+    <table class="content-table">
+      <thead>
+      <tr>
+        <th><%= t 'employee.id' %></th>
+        <th><%= t 'employee.full_name' %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @result.each do |employee| %>
+          <tr class="item-wrapper">
+            <td><%= employee.id %></td>
+            <td><%= employee.full_name %></td>
+            <td><%= link_to t('employee.show'), employee %></td>
+            <td><%= link_to t('employee.edit'), edit_employee_path(employee) %></td>
+            <td><%= link_to t('employee.destroy'), employee, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <% if @result.empty? %>
+        <h2><%= t'query.inspector.not_found'%></h2>
+    <% end %>
+<% end %>

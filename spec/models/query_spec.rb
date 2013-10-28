@@ -54,7 +54,7 @@ describe 'Queries', :slow do
 
   it "Manager query: \n"+
      "average monthly salaries for companies in selected year "+
-     "grouped by company and month", :focus do
+     "grouped by company and month" do
     c1 = create :company
     c2 = create :company
     e1 = create :employee

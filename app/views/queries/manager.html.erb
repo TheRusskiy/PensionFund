@@ -1,0 +1,45 @@
+<h1><%=	 t'query.title'%></h1>
+<p><%= t'query.manager.description'%></p>
+<!-- FILTERS-->
+<%= form_tag queries_manager_path, method: :get do %>
+
+    <!--YEAR-->
+    <div class="field">
+      <%= label :year, t('query.manager.year'), for: :year %>
+      <%= select_year(params[:year].to_i||DateTime.now, id: :year, prefix: 'year', discard_type: true) %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag t('query.manager.submit') %>
+    </div>
+<% end %>
+
+<%if @result %>
+    <!--RESULT LIST-->
+    <table class="content-table">
+      <thead>
+      <tr>
+        <th><%= t 'query.manager.company' %></th>
+        <th><%= t 'query.manager.month' %></th>
+        <th><%= t 'query.manager.amount' %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @result.each do |r| %>
+          <tr class="item-wrapper">
+            <td><%= r['company'] %></td>
+            <td><%= t('date.month_names')[r['month'].to_i] %></td>
+            <td><%= r['amount'] %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <% if @result.size==0 %>
+        <h2><%= t'query.inspector.not_found'%></h2>
+    <% end %>
+<% end %>
