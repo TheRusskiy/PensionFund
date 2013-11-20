@@ -1,6 +1,8 @@
 <h3><%= @job_position.name %></h3>
 <div class="content">
-  <%= link_to t('position.edit'), edit_job_position_path(@job_position) %> |
+	<% if permitted? :job_positions, :edit %>
+  	<%= link_to t('position.edit'), edit_job_position_path(@job_position) %> |
+  <% end -%>
   <%= link_to t('back'), job_positions_path %>
 </div>
 <div class="content">

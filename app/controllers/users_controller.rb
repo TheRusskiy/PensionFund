@@ -65,4 +65,6 @@ class UsersController < ApplicationController
   def current_resource
     @current_resource||=User.find(params[:id]) if params[:id]
   end
+
+  helper_method  :current_resource
 end

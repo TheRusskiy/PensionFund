@@ -9,10 +9,10 @@ module ApplicationHelper
     end
   end
 
-  def if_permitted(controller, action, &block)
-    return current_permission.permit? controller, action if block.nil?
+  def if_permitted(controller, action, resource = nil, &block)
+    return current_permission.permit? controller, action, resource if block.nil?
     # if block was passed wrap it's content
-    if current_permission.permit? controller, action
+    if current_permission.permit? controller, action, resource
       raw(block.call)
     else
       raw("<div class='hidden'>#{block.call}</div>")

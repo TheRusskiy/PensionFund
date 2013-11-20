@@ -1,6 +1,8 @@
 <h3><%= @transfer.company %></h3>
 <div class="content">
-  <%= link_to t('transfer.edit'), edit_transfer_path(@transfer) %> |
+  <% if permitted? :transfers, :edit %>
+    <%= link_to t('transfer.edit'), edit_transfer_path(@transfer) %> |
+  <% end -%>
   <%= link_to t('back'), transfers_path %>
 </div>
 <p>

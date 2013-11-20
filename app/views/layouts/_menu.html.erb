@@ -32,19 +32,45 @@
     <div class="keeper main-menu-offset">
   <ul class="main-menu">
     <!--<li><%= link_to t('menu.home'), root_path %></li> CLICK ON IMAGE INSTEAD-->
+    <% if permitted? :employees, :index %>
     <li><%= link_to t('menu.employees'), employees_path %></li>
+    <% end %>
+
+    <% if permitted? :companies, :index %>
     <li><%= link_to t('menu.companies'), companies_path %></li>
+    <% end %>
+
+    <% if permitted? :transfers, :index %>
     <li><%= link_to t('menu.transfers'), transfers_path %></li>
+    <% end %>
+
     <% if permitted? :payments, :index %>
     <li><%= link_to t('menu.payments'), payments_path %></li>
     <% end %>
 
+    <% if permitted? :contracts, :index %>
     <li><%= link_to t('menu.contracts'), contracts_path %></li>
+    <% end %>
+
+    <% if permitted? :property_types, :index %>
     <li><%= link_to t('menu.property_types'), property_types_path %></li>
+    <% end %>
+
+    <% if permitted? :job_positions, :index %>
     <li><%= link_to t('menu.job_positions'), job_positions_path %></li>
+    <% end %>
+
+    <% if permitted? :users, :index %>
     <li><%= link_to t('menu.users'), users_path %></li>
+    <% end %>
+
+    <% if permitted? :queries, :inspector %>
     <li><%= link_to t('menu.inspector'), queries_inspector_path %></li>
+    <% end %>
+
+    <% if permitted? :queries, :manager %>
     <li><%= link_to t('menu.manager'), queries_manager_path %></li>
+    <% end %>
   </ul>
     </div>
   </div>

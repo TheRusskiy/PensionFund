@@ -1,7 +1,11 @@
 <h3><%= @contract %></h3>
 <div class="content">
-  <%= link_to t('contract.edit'), edit_contract_path(@contract) %> |
+  <% if permitted? :contracts, :edit %>
+    <%= link_to t('contract.edit'), edit_contract_path(@contract) %>
+  <% end %>
+  
   <%= link_to t('back'), contracts_path %>
+
 </div>
 <p>
   <strong><%=t('contract.company')%>:</strong>

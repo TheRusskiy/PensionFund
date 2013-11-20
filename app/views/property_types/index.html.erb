@@ -1,6 +1,8 @@
 <h3><%= t 'property.title'%></h3>
 <div class="content">
-  <%= link_to t('property.new'), new_property_type_path %>
+  <% if permitted? :property_types, :new %>
+    <%= link_to t('property.new'), new_property_type_path %>
+  <% end -%>
 </div>
 <table class="content-table">
   <thead>
@@ -16,9 +18,17 @@
     <% @property_types.each do |property_type| %>
       <tr class="item-wrapper">
         <td><%= property_type.name %></td>
+        <% if permitted? :property_types, :show %>
         <td><%= link_to t('property.show'), property_type %></td>
+        <% end -%>
+
+        <% if permitted? :property_types, :edit %>
         <td><%= link_to t('property.edit'), edit_property_type_path(property_type) %></td>
+        <% end -%>
+
+        <% if permitted? :property_types, :destroy %>
         <td><%= link_to t('property.destroy'), property_type, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% end -%>
       </tr>
     <% end %>
   </tbody>

@@ -3,6 +3,8 @@ require "#{Rails.root}/lib/queries"
 
 describe 'Queries', :slow do
   before(:each) do
+    Employee.destroy_all unless Employee.count == 0
+    Payment.destroy_all unless Payment.count == 0
     Employee.count.should eq 0
     Payment.count.should eq 0
   end

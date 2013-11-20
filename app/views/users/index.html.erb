@@ -1,6 +1,8 @@
 <h3><%= t('user.title')%></h3>
 <div class="content">
-  <%= link_to t('user.new'), new_user_path %>
+  <% if permitted? :users, :new %>
+    <%= link_to t('user.new'), new_user_path %>
+  <% end -%>
 </div>
 <table class="content-table">
   <thead>
@@ -18,9 +20,17 @@
       <tr class="item-wrapper">
         <td><%= user.email %></td>
         <td><%= user.role %></td>
-        <td><%= link_to t('user.show'), user %></td>
-        <td><%= link_to t('user.edit'), edit_user_path(user) %></td>
-        <td><%= link_to t('user.destroy'), user, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% if permitted? :users, :show, user %>
+          <td><%= link_to t('user.show'), user %></td>
+        <% end -%>
+
+        <% if permitted? :users, :edit, user %>
+          <td><%= link_to t('user.edit'), edit_user_path(user) %></td>
+        <% end -%>
+
+        <% if permitted? :users, :destroy, user %>
+          <td><%= link_to t('user.destroy'), user, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% end -%>
       </tr>
     <% end %>
   </tbody>

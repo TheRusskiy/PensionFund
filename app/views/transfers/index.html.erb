@@ -1,6 +1,8 @@
 <h3><%= t('transfer.title')%></h3>
 <div class="content">
-  <%= link_to t('transfer.new'), new_transfer_path(transfer: @current_params) %>
+  <% if permitted? :transfers, :new %>
+    <%= link_to t('transfer.new'), new_transfer_path(transfer: @current_params) %>
+  <% end -%>
 </div>
 
 <!-- FILTERS-->
@@ -64,10 +66,19 @@
         <td><%= transfer.amount %></td>
         <td><%= transfer.month %></td>
         <td><%= transfer.year %></td>
+
+        <% if permitted? :transfers, :show %>
         <td><%= link_to t('transfer.show'), transfer_path(transfer) %></td>
+        <% end -%>
+
+        <% if permitted? :transfers, :edit %>
         <td><%= link_to t('transfer.edit'), edit_transfer_path(transfer) %></td>
+        <% end -%>
+
+        <% if permitted? :transfers, :destroy %>
         <td><%= link_to t('transfer.destroy'), transfer_path(transfer), \
                         method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% end -%>
       </tr>
     <% end %>
   </tbody>

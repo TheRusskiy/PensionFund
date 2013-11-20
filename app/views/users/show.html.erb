@@ -1,6 +1,8 @@
 <h3><%= @user.email %></h3>
 <div class="content">
-  <%= link_to t('user.edit'), edit_user_path(@user) %> |
+	<% if permitted? :users, :edit, current_resource %>
+  	<%= link_to t('user.edit'), edit_user_path(@user) %> |
+  <% end -%>
   <%= link_to t('back'), users_path %>
 </div>
 <div class="content">

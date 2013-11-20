@@ -11,8 +11,12 @@
 <section>
   <div class="keeper inner">
     <div class="content">
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
+      <% if notice %>
+        <div id="notice"><%= notice %></div>
+      <% end -%>
+      <% if alert %>
+        <div id="alert"><%= alert %></div>
+      <% end -%>
     </div>
     <%= yield %>
 </div>

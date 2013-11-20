@@ -17,3 +17,8 @@
 //= require jquery.lockfixed.min
 //= require jquery.fancybox
 //= require mpizza
+
+$(document).ready(function (){
+  $('#notice').hide().slideDown(500).delay(4000).slideUp(500);
+  $('#alert').hide().slideDown(500);
+});

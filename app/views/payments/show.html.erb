@@ -1,6 +1,8 @@
 <h3><%= @payment.company %></h3>
 <div class="content">
-  <%= link_to t('payment.edit'), edit_payment_path(@payment) %> |
+  <% if permitted? :payments, :edit %>
+    <%= link_to t('payment.edit'), edit_payment_path(@payment) %> |
+  <% end -%>
   <%= link_to t('back'), payments_path %>
 </div>
 <p>

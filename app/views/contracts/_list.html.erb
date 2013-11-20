@@ -16,9 +16,17 @@
         <%= raw"<td>#{contract.company.name}</th>" unless filtered? 'company'%>
         <%= raw"<td>#{contract.employee.full_name}</th>" unless filtered? 'employee'%>
         <%= raw"<td>#{contract.job_position.name}</th>" unless filtered? 'job_position'%>
-        <td><%= link_to t('contract.show'), contract %></td>
-        <td><%= link_to t('contract.edit'), edit_contract_path(contract) %></td>
-        <td><%= link_to t('contract.destroy'), contract, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% if permitted? :contracts, :show %>
+          <td><%= link_to t('contract.show'), contract %></td>
+        <% end %>
+
+        <% if permitted? :contracts, :edit %>
+          <td><%= link_to t('contract.edit'), edit_contract_path(contract) %></td>
+        <% end %> 
+
+        <% if permitted? :contracts, :destroy %>
+          <td><%= link_to t('contract.destroy'), contract, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

@@ -1,6 +1,8 @@
 <h3><%= @property_type.name %></h3>
 <div class="content">
-  <%= link_to t('property.edit'), edit_property_type_path(@property_type) %> |
+	<% if permitted? :property_types, :edit %>
+  	<%= link_to t('property.edit'), edit_property_type_path(@property_type) %> |
+  <% end -%>
   <%= link_to t('back'), property_types_path %>
 </div>
 <div class="content">

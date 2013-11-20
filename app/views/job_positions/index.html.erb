@@ -1,6 +1,8 @@
 <h3><%= t('position.title')%></h3>
 <div class="content">
-  <%= link_to t('position.new'), new_job_position_path %>
+  <% if permitted? :job_positions, :new %>
+    <%= link_to t('position.new'), new_job_position_path %>
+  <% end -%>
 </div>
 <table class="content-table">
   <thead>
@@ -16,9 +18,17 @@
     <% @job_positions.each do |job_position| %>
       <tr class="item-wrapper">
         <td><%= job_position.name %></td>
-        <td><%= link_to t('position.show'), job_position %></td>
-        <td><%= link_to t('position.edit'), edit_job_position_path(job_position) %></td>
-        <td><%= link_to t('position.destroy'), job_position, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% if permitted? :job_positions, :show %>
+          <td><%= link_to t('position.show'), job_position %></td>
+        <% end -%>
+        
+        <% if permitted? :job_positions, :edit %>
+          <td><%= link_to t('position.edit'), edit_job_position_path(job_position) %></td>
+        <% end -%>
+
+        <% if permitted? :job_positions, :destroy %>
+          <td><%= link_to t('position.destroy'), job_position, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+        <% end -%>
       </tr>
     <% end %>
   </tbody>
