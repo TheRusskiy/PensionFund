@@ -48,7 +48,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'debugger', group: [:development, :test]
 
 group :production do
-  gem 'unicorn'
+  #gem 'unicorn'
 end
 
 group :development do
