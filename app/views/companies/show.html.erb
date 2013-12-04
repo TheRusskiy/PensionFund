@@ -1,15 +1,21 @@
 <h3><%= @company.name %></h3>
 <div class="content">
   <% if permitted? :companies, :edit %>
-    <%= link_to t('company.edit'), edit_company_path(@company) %> |
+    <%= link_to t('company.edit'), edit_company_path(@company) %>
+  <br/>
   <% end %>
-  
+
+  <% if permitted? :payments, :bulk_edit %>
+      <%= link_to t('payment.bulk_edit'), edit_payments_company_path%>
+      <br/>
+  <% end %>
+
   <% if permitted? :contracts, :new %>
     <%= link_to t('company.new_contract'), new_contract_path(
           company_id:@company.id,
           filtered:[:company])%>
+      <br/>
   <% end %>
-  
 </div>
 
 <div class="content">

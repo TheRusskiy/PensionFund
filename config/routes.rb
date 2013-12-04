@@ -9,11 +9,29 @@ Pensionfund::Application.routes.draw do
 
   resources :employees
 
-  resources :transfers
+  resources :transfers do
+    collection do
+      get 'edit',
+          as: 'edit',
+          to: 'transfers#bulk_edit'
+      put 'save',
+          as: 'save',
+          to: 'transfers#bulk_save'
+    end
+  end
 
   resources :property_types
 
-  resources :companies
+  resources :companies do
+    member do
+      get 'payments',
+          as: 'edit_payments',
+          to: 'companies#bulk_edit'
+      put 'payments',
+          as: 'save_payments',
+          to: 'companies#bulk_save'
+    end
+  end
 
   resources :contracts
 

@@ -65,6 +65,43 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def bulk_edit
+    @company = Company.find(params[:id])
+    month = DateTime.now.month
+    year = DateTime.now.year
+    params[:date]||= { year: year, month: month }
+    @payments = @company.payments.where(month: params[:date][:month], year: params[:date][:year])
+    actual_payments_employee_ids = @payments.map do |p| p.employee.id end
+    new_payments = @company.employees.map do |e|
+      Payment.new(employee: e, month: month, year: year, amount: 0) unless
+          actual_payments_employee_ids.include? e.id
+    end.compact
+    @payments = @payments + new_payments
+  end
+
+  def bulk_save
+    year = params[:date][:year].to_i
+    month = params[:date][:month].to_i
+    company = Company.find(params[:id].to_i)
+    begin
+      params[:payments_for].each_pair do |employee, amount|
+        amount = amount.to_i
+        payment = Payment.where(year: year, month: month, company: company, employee_id: employee.to_i).first
+        existed = !!payment
+        payment||= Payment.new(year: year, month: month, company: company, employee_id: employee.to_i)
+        if existed and amount == 0
+          payment.destroy!
+        else
+          payment.amount = amount
+          payment.save! unless amount == 0
+        end
+      end
+      redirect_to edit_payments_company_path(date: { year: year, month: month }), notice: t('payment.successfully_updated')
+    rescue Exception => e
+      redirect_to edit_payments_company_path(date: { year: year, month: month }), alert: e.message
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company

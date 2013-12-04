@@ -1,0 +1,36 @@
+<%= form_tag edit_payments_company_path, method: "GET" do%>
+    <div class="field">
+      <%= label :month, t('payment.month'), for: :payment_month%>
+      <%= select_month(params[:date][:month].to_i, id: :month, field_name: :month) %>
+    </div>
+
+    <div class="field">
+      <%= label :year, t('payment.year'), for: :payment_year %>
+      <%= select_year(params[:date][:year].to_i, id: :year, field_name: :year) %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag t('payment.set_date')%>
+    </div>
+<% end %>
+<%= form_tag save_payments_company_path, method: "PUT" do%>
+    <%= hidden_field_tag('date[year]', params[:date][:year])%>
+    <%= hidden_field_tag('date[month]', params[:date][:month])%>
+    <table class="content-table">
+      <tr class="item-wrapper">
+        <th><%= t('payment.employee')%></th>
+        <th><%= t('payment.amount')%></th>
+      </tr>
+        <% @payments.each do |p| %>
+        <tr>
+          <td><%= p.employee%></td>
+          <td><%= number_field_tag "payments_for[#{p.employee.id}]", p.amount  %></td>
+        </tr>
+        <% end %>
+    </table>
+    <% if permitted? :payments, :bulk_save %>
+        <div class="actions">
+          <%= submit_tag t('payment.update')%>
+        </div>
+    <% end %>
+<% end %>

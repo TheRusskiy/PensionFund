@@ -1,7 +1,8 @@
 class Permission
   # BIG THANKS TO RYAN BATES
   def self.actions
-    [:index, :show, :new, :create, :edit, :update, :destroy]
+    [:index, :show, :new, :create, :edit, :update, :destroy,
+     :bulk_edit, :bulk_save]
   end
 
   def self.resources
