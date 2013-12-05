@@ -1,0 +1,45 @@
+<div class="content">
+  <% if permitted? :transfers, :new %>
+      <%= link_to t('transfer.new'), new_transfer_path(transfer: @current_params) %>
+  <% end -%>
+</div>
+
+<%= form_tag edit_transfers_path, method: "GET" do%>
+    <div class="field">
+      <%= label :month, t('payment.month'), for: :payment_month%>
+      <%= select_month(params[:date][:month].to_i, id: :month, field_name: :month) %>
+    </div>
+
+    <div class="field">
+      <%= label :year, t('payment.year'), for: :payment_year %>
+      <%= select_year(params[:date][:year].to_i, id: :year, field_name: :year) %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag t('payment.set_date')%>
+    </div>
+<% end %>
+
+<%= form_tag save_transfers_path, method: "PUT" do%>
+    <%= hidden_field_tag('date[year]', params[:date][:year])%>
+    <%= hidden_field_tag('date[month]', params[:date][:month])%>
+    <table class="content-table">
+      <tr class="item-wrapper">
+        <th><%= t('transfer.company')%></th>
+        <th><%= t('transfer.transfer_date')%></th>
+        <th><%= t('transfer.amount')%></th>
+      </tr>
+        <% @transfers.each do |t| %>
+        <tr>
+          <td><%= t.company%></td>
+          <td><%= date_select 'transfer_dates', "#{t.company.id}", default: t.transfer_date%></td>
+          <td><%= number_field_tag "amounts[#{t.company.id}]", t.amount  %></td>
+        </tr>
+        <% end %>
+    </table>
+    <% if permitted? :transfers, :bulk_save %>
+        <div class="actions">
+          <%= submit_tag t('transfer.update')%>
+        </div>
+    <% end %>
+<% end %>

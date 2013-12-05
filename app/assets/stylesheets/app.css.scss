@@ -273,3 +273,8 @@ li.user{
     color: green;
     background-color: #9bff9f;
 }
+
+td > select, td > input {
+  display: inline-table;
+  width: 100px;
+}

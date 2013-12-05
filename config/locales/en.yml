@@ -114,6 +114,8 @@ en:
 
   transfer:
     title: "Transfers"
+    bulk_edit: "Bulk edit"
+    set_date: "Set date"
     destroy: "Destroy"
     show: "Show"
     edit: "Edit"

@@ -4,6 +4,11 @@
     <%= link_to t('transfer.new'), new_transfer_path(transfer: @current_params) %>
   <% end -%>
 </div>
+<div class="content">
+  <% if permitted? :transfers, :bulk_edit %>
+    <%= link_to t('transfer.bulk_edit'), edit_transfers_path %>
+  <% end -%>
+</div>
 
 <!-- FILTERS-->
 <%= form_tag transfers_path, method: :get do %>
